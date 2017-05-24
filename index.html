@@ -153,11 +153,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                4
+                5
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                3
+                4
                 <span>tags</span>
             </div>
         </div>
@@ -206,6 +206,270 @@
 
             
             <section id="main">
+    <article id="post-提高webpack构建效率之DLLPlugin" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/24/提高webpack构建效率之DLLPlugin/">提高webpack构建效率之DLLPlugin</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/24/提高webpack构建效率之DLLPlugin/">
+            <time datetime="2017-05-24T15:23:09.000Z" itemprop="datePublished">2017-05-24</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/webpack/">webpack</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/webpack-DLLPlugin-DllReferencePlugin/">webpack DLLPlugin DllReferencePlugin</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p><code>webpack</code>是一个将前端资源模块化打包的工具。借助该工具，我们在项目开发的过程中，可以更便宜的处理模块间的依赖关系。而<code>commonjs</code>的模块和ES6的处理代码必须在浏览器使用前，经过webpack的构建。</p>
+<p>模块会随着项目的进展而逐渐增多，随之webpack打包的时间也会加长。最近开发的项目，经过基本的优化，打包的时间已经超过<code>120s</code>, 而改动代码后，至少也要<code>10s</code>页面才能重新刷新。如此，开阿发效率大大降低。</p>
+<h3 id="2-CommonsChunkPlugin"><a href="#2-CommonsChunkPlugin" class="headerlink" title="2. CommonsChunkPlugin"></a>2. CommonsChunkPlugin</h3><p>分析了下(这儿可以贴张图)，主要占打包资源的是依赖的<code>React</code>，<code>axios</code>、<code>semantic-react-ui</code>等等引入的包依赖，在执行<code>node webpack.config.js</code>的时候，所有的依赖都会重新打包一遍。之前我采用的是<code>CommonsChunkPlugin</code>来对相同的模块，单独提取出来打包，进而减小rebuild的性能。</p>
+<pre><code>var config = {
+  // 入口文件
+  entry: {
+    app: [&apos;./index.js&apos;],
+    lib: [
+       &apos;react&apos;, &apos;react-dom&apos;, &apos;react-router&apos;,
+       &apos;redux&apos;, &apos;react-redux&apos;, &apos;redux-thunk&apos;
+     ],
+  },
+  output: {
+    path: &apos;./&apos;,
+    filename: &apos;[name].js&apos;,
+  },
+  plugins: [
+    // 提取共同模块
+    new webpack.optimize.CommonsChunkPlugin({
+       names: [&apos;lib&apos;, &apos;app&apos;]
+    }),
+  ]
+}
+</code></pre><p>然而<code>CommonsChunkPlugin</code>只在<code>rebuild</code>的时候有一点效果，初次运行的时间仍然没有变。</p>
+<p>网上搜索加上实际操作，终于让我找到了解决方法。</p>
+<h3 id="3-DLL-amp-DllReference"><a href="#3-DLL-amp-DllReference" class="headerlink" title="3. DLL &amp; DllReference"></a>3. DLL &amp; DllReference</h3><h4 id="DLL"><a href="#DLL" class="headerlink" title="DLL"></a>DLL</h4><blockquote>
+<p>DLL 插件不执行任何模块的代码，只是引入模块。最终导出一个可以用于通过id（内部引入函数）来引入模块的函数和一个被写入特殊位置的<code>manifest.json</code>文件，该文件包含实际请求到模块id的映射。</p>
+</blockquote>
+<p><em>详细参考 <a href="https://github.com/webpack/docs/wiki/list-of-plugins#dllplugin">dllplugin</a></em></p>
+<p>该插件结合<code>output.library</code>选项，使dll方法可以在全局范围内使用。</p>
+<p><strong>webpack.dll.js</strong></p>
+<pre><code>new DllPlugin({
+  path: path.join(__dirname, &quot;manifest.json&quot;),
+  name: &quot;[name]_[hash]&quot;,
+  context: __dirname
+})
+</code></pre><ul>
+<li><code>path</code> : manifest文件生成的位置，绝对路径</li>
+<li><code>name</code> : dll 方法的名称（与 output.library 保持一致）</li>
+<li><code>context (可选)</code> : manifest文件中请求（对模块的引入请求）的上下文环境，默认与webpack环境保持一致</li>
+</ul>
+<h4 id="DllReference"><a href="#DllReference" class="headerlink" title="DllReference"></a>DllReference</h4><blockquote>
+<p>ss</p>
+</blockquote>
+<p><em>详细参考 <a href="https://github.com/webpack/docs/wiki/list-of-plugins#dllreferenceplugin">dllreferenceplugin</a></em></p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code>new DllReferencePlugin({
+  context: __dirname,
+  scope: &quot;xyz&quot;,
+  manifest: require(&quot;./manifest.json&quot;),
+  name: &quot;./my-dll.js&quot;,
+  sourceType: &quot;commonsjs2&quot;,
+  content: { ... }
+})
+</code></pre><ul>
+<li><code>context</code>: (absolute path) context of requests in the manifest (or content property)</li>
+<li><code>scope</code> (optional): prefix which is used for accessing the content of the dll<br>manifest (object): an object containing content and name</li>
+<li><code>name</code> (optional): the name where the dll is exposed (defaults to manifest.name) (see also externals)</li>
+<li><code>sourceType</code> (optional): the type how the dll is exposed (defaults to “var”) (see also externals)</li>
+<li><code>content</code> (optional): the mappings from request to module id (defaults to manifest.content)</li>
+</ul>
+<h3 id="4-实际操作"><a href="#4-实际操作" class="headerlink" title="4. 实际操作"></a>4. 实际操作</h3><ol>
+<li><p>在根目录单独建立一个 <code>webpack.dll.js</code></p>
+<pre><code>var webpack = require(&apos;webpack&apos;)
+
+module.exports = {
+    output: {
+        path: &apos;./dll&apos;,
+        filename: &apos;[name].js&apos;,
+        /**
+         * output.library
+         * 将会定义为 window.${output.library}
+         * 在这次的例子中，将会定义为`window.vendor_library`
+         */
+        library: &apos;[name]_library&apos;,
+        libraryTarget: &apos;commonjs2&apos;
+    },
+    entry: {
+        // 入口，依赖的外部模块
+        vendor: [
+          &apos;react&apos;, &apos;react-dom&apos;, &apos;react-router&apos;, &apos;redux&apos;, &apos;react-redux&apos;, 
+          &apos;redux-thunk&apos;, &apos;semantic-ui-react&apos;, &apos;lodash&apos;, &apos;echarts&apos;, &apos;axios&apos;
+        ]
+    },
+    plugins: [
+        new webpack.DllPlugin({
+           /**
+            * path
+            * 定义 manifest 文件生成的位置
+            * [name]的部分由entry的名字替换
+            */
+            path: &apos;./dll/[name]-manifest.json&apos;,
+           /**
+            * name
+            * dll bundle 输出到那个全局变量上
+            * 和 output.library 一样即可。 
+            */
+            name: &apos;[name]&apos;,
+            context: __dirname
+        })
+    ]
+}
+</code></pre></li>
+</ol>
+<ol>
+<li><p>生成dll文件 </p>
+<p> 执行<code>./node_modules/.bin/webpack --config build/webpack.config.js</code>。</p>
+<p> 请在每次依赖的模块更改时重新执行这个命令</p>
+</li>
+<li><p>在<code>index.html</code>中引入dll文件</p>
+<p> <em>这一步必不可少，之前因为少了这一步，一直报 vendor_library not defined</em></p>
+<pre><code>//这个模块的引入必须在自定义文件的入口之前
+&lt;script src=&quot;dist/dll/vendor.dll.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p><code>webpack.config.js</code></p>
+<pre><code>var webpack = require(&apos;webpack&apos;)
+
+module.exports = {
+    output: {
+        path: __dirname,
+        filename: &apos;[name].bundle.js&apos;,
+    },
+    entry: {
+        app: [&apos;./app.js&apos;]
+    },
+    plugins: [
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require(&apos;./dll/test-manifest.json&apos;),
+            sourceType: &apos;commonjs2&apos;,
+            name: &apos;./dll/test.js&apos;
+        })
+    ]
+}
+</code></pre></li>
+</ol>
+<h3 id="BugFixed"><a href="#BugFixed" class="headerlink" title="BugFixed"></a>BugFixed</h3><p>配置中常可能会出现的问题：</p>
+<ol>
+<li><p><a href="https://github.com/webpack/webpack/issues/2875">vendor not defined</a> : 模块没有在html中引入，在根目录文件夹中加入script标签引入dll文件。</p>
+</li>
+<li><p>打包时间没有变快： 检查下<code>webpack.config.js</code>的<code>context</code>是否和<code>webpack.config.js</code>的一致，不一致的话保持一致，一般这个context的默认值是开发项目的根路径。</p>
+</li>
+</ol>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="https://medium.com/@soederpop/webpack-plugins-been-we-been-keepin-on-the-dll-cdfdd6cb8cd7" target="_blank" rel="external">Webpack Plugins we been keepin on the DLL</a></li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+</div>
+
+            
+    
+        <a href="http://github.com/2017/05/24/提高webpack构建效率之DLLPlugin/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://github.com/2017/05/24/提高webpack构建效率之DLLPlugin/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-php-安装和开启外部扩展库" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -254,7 +518,7 @@
 <p>经过一番折腾，终于找到解决方法，整理如下：</p>
 <h2 id="检测扩展"><a href="#检测扩展" class="headerlink" title="检测扩展"></a>检测扩展</h2><p>首先检查下扩展有没有加载，如果已经加载了，那基本是99%的可能性确定问题不是出现在扩展库这个地方了。</p>
 <h3 id="phpinfo"><a href="#phpinfo" class="headerlink" title="phpinfo()"></a>phpinfo()</h3><p>利用<code>phpinfo()</code>这个方法可以查看当前安装的php包含的扩展有哪些。</p>
-<h3 id="bugfixed"><a href="#bugfixed" class="headerlink" title="bugfixed"></a>bugfixed</h3><p>在安装的时候我遇到了一个很难发现的bug: 在linux端通过<code>php -m</code>命令，我看到了一些我已经安装的扩展，但是在浏览器端通过<code>phpinfo()</code>方法，却发现缺少很多已经安装的库。后来找到原因，<code>Apache</code>中配置的<code>php.ini</code>的位置不对。如果出现类似的问题，不妨检查下<code>Apache</code>中的<code>http.conf</code>的配置是否正确</p>
+<h3 id="bugfixed"><a href="#bugfixed" class="headerlink" title="bugfixed"></a>bugfixed</h3><p>在安装的时候我遇到了一个很难发现的bug: 在linux端通过<code>php -m</code>命令，我看到了一些我已经安装的扩展，但是在浏览器端通过<code>phpinfo()</code>方法，却发现缺少很多已经安装的库。后来找到原因，<code>Apache</code>中配置的<code>php.ini</code>的位置不对。如果出现类似的问题，不妨检查下<code>Apache</code>根目录下<code>conf</code>文件夹中的<code>http.conf</code>的配置是否正确</p>
 <h2 id="安装和开启"><a href="#安装和开启" class="headerlink" title="安装和开启"></a>安装和开启</h2><p>废话辣么多，终于可以开始说正题了。windows环境新增外部扩展的方法请参考<a href="http://www.haorooms.com/post/php_openssl" target="_blank" rel="external">php开启openssl的方法,openssl安装</a>。本文主要介绍<code>linux centos7</code>的安装方法。</p>
 <p>php版本： php-5.6.4</p>
 <p>这个地方由于我们服务器上的安装包内的文件不是很全，官网上下载也不是很方便，所以这个地方推荐用搜狐的镜像来下载。地址为：<a href="http://mirrors.sohu.com/php/" target="_blank" rel="external">http://mirrors.sohu.com/php/</a></p>
@@ -865,6 +1129,25 @@ extension=openssl.so
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/05/24/提高webpack构建效率之DLLPlugin/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/webpack/">webpack</a></p>
+                            <p class="item-title"><a href="/2017/05/24/提高webpack构建效率之DLLPlugin/" class="title">提高webpack构建效率之DLLPlugin</a></p>
+                            <p class="item-date"><time datetime="2017-05-24T15:23:09.000Z" itemprop="datePublished">2017-05-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/04/26/php-安装和开启外部扩展库/" class="thumbnail">
     
     
@@ -947,7 +1230,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react-学习/">react 学习</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react-学习/">react 学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -956,7 +1239,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -965,7 +1248,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-DLLPlugin-DllReferencePlugin/">webpack DLLPlugin DllReferencePlugin</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -974,7 +1257,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/react/" style="font-size: 10px;">react</a>
+            <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/webpack-DLLPlugin-DllReferencePlugin/" style="font-size: 10px;">webpack DLLPlugin DllReferencePlugin</a>
         </div>
     </div>
 

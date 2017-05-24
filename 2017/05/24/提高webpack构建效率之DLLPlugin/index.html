@@ -3,14 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Tag: react | Cecelia&#39;s BLOG</title>
+    <title>提高webpack构建效率之DLLPlugin | Cecelia&#39;s BLOG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Cecelia's BLOG">
-<meta property="og:url" content="http://github.com/tags/react/index.html">
+    <meta name="description" content="1.前言webpack是一个将前端资源模块化打包的工具。借助该工具，我们在项目开发的过程中，可以更便宜的处理模块间的依赖关系。而commonjs的模块和ES6的处理代码必须在浏览器使用前，经过webpack的构建。
+模块会随着项目的进展而逐渐增多，随之webpack打包的时间也会加长。最近开发的项目，经过基本的优化，打包的时间已经超过120s, 而改动代码后，至少也要10s页面才能重新刷新。如此，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="提高webpack构建效率之DLLPlugin">
+<meta property="og:url" content="http://github.com/2017/05/24/提高webpack构建效率之DLLPlugin/index.html">
 <meta property="og:site_name" content="Cecelia's BLOG">
+<meta property="og:description" content="1.前言webpack是一个将前端资源模块化打包的工具。借助该工具，我们在项目开发的过程中，可以更便宜的处理模块间的依赖关系。而commonjs的模块和ES6的处理代码必须在浏览器使用前，经过webpack的构建。
+模块会随着项目的进展而逐渐增多，随之webpack打包的时间也会加长。最近开发的项目，经过基本的优化，打包的时间已经超过120s, 而改动代码后，至少也要10s页面才能重新刷新。如此，">
+<meta property="og:updated_time" content="2017-05-24T16:59:41.025Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cecelia's BLOG">
+<meta name="twitter:title" content="提高webpack构建效率之DLLPlugin">
+<meta name="twitter:description" content="1.前言webpack是一个将前端资源模块化打包的工具。借助该工具，我们在项目开发的过程中，可以更便宜的处理模块间的依赖关系。而commonjs的模块和ES6的处理代码必须在浏览器使用前，经过webpack的构建。
+模块会随着项目的进展而逐渐增多，随之webpack打包的时间也会加长。最近开发的项目，经过基本的优化，打包的时间已经超过120s, 而改动代码后，至少也要10s页面才能重新刷新。如此，">
     
 
     
@@ -205,50 +212,293 @@
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#react</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-提高webpack构建效率之DLLPlugin" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/12/14/React-知识图谱/">React 知识学习图谱</a>
+        <h1 class="article-title" itemprop="name">
+            提高webpack构建效率之DLLPlugin
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/12/14/React-知识图谱/">
-            <time datetime="2016-12-14T07:17:31.000Z" itemprop="datePublished">2016-12-14</time>
+        <a href="/2017/05/24/提高webpack构建效率之DLLPlugin/">
+            <time datetime="2017-05-24T15:23:09.000Z" itemprop="datePublished">2017-05-24</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/react-学习/">react 学习</a>
+        <a class="article-category-link" href="/categories/webpack/">webpack</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/react/">react</a>
+        <a class="tag-link" href="/tags/webpack-DLLPlugin-DllReferencePlugin/">webpack DLLPlugin DllReferencePlugin</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p><code>webpack</code>是一个将前端资源模块化打包的工具。借助该工具，我们在项目开发的过程中，可以更便宜的处理模块间的依赖关系。而<code>commonjs</code>的模块和ES6的处理代码必须在浏览器使用前，经过webpack的构建。</p>
+<p>模块会随着项目的进展而逐渐增多，随之webpack打包的时间也会加长。最近开发的项目，经过基本的优化，打包的时间已经超过<code>120s</code>, 而改动代码后，至少也要<code>10s</code>页面才能重新刷新。如此，开阿发效率大大降低。</p>
+<h3 id="2-CommonsChunkPlugin"><a href="#2-CommonsChunkPlugin" class="headerlink" title="2. CommonsChunkPlugin"></a>2. CommonsChunkPlugin</h3><p>分析了下(这儿可以贴张图)，主要占打包资源的是依赖的<code>React</code>，<code>axios</code>、<code>semantic-react-ui</code>等等引入的包依赖，在执行<code>node webpack.config.js</code>的时候，所有的依赖都会重新打包一遍。之前我采用的是<code>CommonsChunkPlugin</code>来对相同的模块，单独提取出来打包，进而减小rebuild的性能。</p>
+<pre><code>var config = {
+  // 入口文件
+  entry: {
+    app: [&apos;./index.js&apos;],
+    lib: [
+       &apos;react&apos;, &apos;react-dom&apos;, &apos;react-router&apos;,
+       &apos;redux&apos;, &apos;react-redux&apos;, &apos;redux-thunk&apos;
+     ],
+  },
+  output: {
+    path: &apos;./&apos;,
+    filename: &apos;[name].js&apos;,
+  },
+  plugins: [
+    // 提取共同模块
+    new webpack.optimize.CommonsChunkPlugin({
+       names: [&apos;lib&apos;, &apos;app&apos;]
+    }),
+  ]
+}
+</code></pre><p>然而<code>CommonsChunkPlugin</code>只在<code>rebuild</code>的时候有一点效果，初次运行的时间仍然没有变。</p>
+<p>网上搜索加上实际操作，终于让我找到了解决方法。</p>
+<h3 id="3-DLL-amp-DllReference"><a href="#3-DLL-amp-DllReference" class="headerlink" title="3. DLL &amp; DllReference"></a>3. DLL &amp; DllReference</h3><h4 id="DLL"><a href="#DLL" class="headerlink" title="DLL"></a>DLL</h4><blockquote>
+<p>DLL 插件不执行任何模块的代码，只是引入模块。最终导出一个可以用于通过id（内部引入函数）来引入模块的函数和一个被写入特殊位置的<code>manifest.json</code>文件，该文件包含实际请求到模块id的映射。</p>
+</blockquote>
+<p><em>详细参考 <a href="https://github.com/webpack/docs/wiki/list-of-plugins#dllplugin">dllplugin</a></em></p>
+<p>该插件结合<code>output.library</code>选项，使dll方法可以在全局范围内使用。</p>
+<p><strong>webpack.dll.js</strong></p>
+<pre><code>new DllPlugin({
+  path: path.join(__dirname, &quot;manifest.json&quot;),
+  name: &quot;[name]_[hash]&quot;,
+  context: __dirname
+})
+</code></pre><ul>
+<li><code>path</code> : manifest文件生成的位置，绝对路径</li>
+<li><code>name</code> : dll 方法的名称（与 output.library 保持一致）</li>
+<li><code>context (可选)</code> : manifest文件中请求（对模块的引入请求）的上下文环境，默认与webpack环境保持一致</li>
+</ul>
+<h4 id="DllReference"><a href="#DllReference" class="headerlink" title="DllReference"></a>DllReference</h4><blockquote>
+<p>ss</p>
+</blockquote>
+<p><em>详细参考 <a href="https://github.com/webpack/docs/wiki/list-of-plugins#dllreferenceplugin">dllreferenceplugin</a></em></p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code>new DllReferencePlugin({
+  context: __dirname,
+  scope: &quot;xyz&quot;,
+  manifest: require(&quot;./manifest.json&quot;),
+  name: &quot;./my-dll.js&quot;,
+  sourceType: &quot;commonsjs2&quot;,
+  content: { ... }
+})
+</code></pre><ul>
+<li><code>context</code>: (absolute path) context of requests in the manifest (or content property)</li>
+<li><code>scope</code> (optional): prefix which is used for accessing the content of the dll<br>manifest (object): an object containing content and name</li>
+<li><code>name</code> (optional): the name where the dll is exposed (defaults to manifest.name) (see also externals)</li>
+<li><code>sourceType</code> (optional): the type how the dll is exposed (defaults to “var”) (see also externals)</li>
+<li><code>content</code> (optional): the mappings from request to module id (defaults to manifest.content)</li>
+</ul>
+<h3 id="4-实际操作"><a href="#4-实际操作" class="headerlink" title="4. 实际操作"></a>4. 实际操作</h3><ol>
+<li><p>在根目录单独建立一个 <code>webpack.dll.js</code></p>
+<pre><code>var webpack = require(&apos;webpack&apos;)
+
+module.exports = {
+    output: {
+        path: &apos;./dll&apos;,
+        filename: &apos;[name].js&apos;,
+        /**
+         * output.library
+         * 将会定义为 window.${output.library}
+         * 在这次的例子中，将会定义为`window.vendor_library`
+         */
+        library: &apos;[name]_library&apos;,
+        libraryTarget: &apos;commonjs2&apos;
+    },
+    entry: {
+        // 入口，依赖的外部模块
+        vendor: [
+          &apos;react&apos;, &apos;react-dom&apos;, &apos;react-router&apos;, &apos;redux&apos;, &apos;react-redux&apos;, 
+          &apos;redux-thunk&apos;, &apos;semantic-ui-react&apos;, &apos;lodash&apos;, &apos;echarts&apos;, &apos;axios&apos;
+        ]
+    },
+    plugins: [
+        new webpack.DllPlugin({
+           /**
+            * path
+            * 定义 manifest 文件生成的位置
+            * [name]的部分由entry的名字替换
+            */
+            path: &apos;./dll/[name]-manifest.json&apos;,
+           /**
+            * name
+            * dll bundle 输出到那个全局变量上
+            * 和 output.library 一样即可。 
+            */
+            name: &apos;[name]&apos;,
+            context: __dirname
+        })
+    ]
+}
+</code></pre></li>
+</ol>
+<ol>
+<li><p>生成dll文件 </p>
+<p> 执行<code>./node_modules/.bin/webpack --config build/webpack.config.js</code>。</p>
+<p> 请在每次依赖的模块更改时重新执行这个命令</p>
+</li>
+<li><p>在<code>index.html</code>中引入dll文件</p>
+<p> <em>这一步必不可少，之前因为少了这一步，一直报 vendor_library not defined</em></p>
+<pre><code>//这个模块的引入必须在自定义文件的入口之前
+&lt;script src=&quot;dist/dll/vendor.dll.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p><code>webpack.config.js</code></p>
+<pre><code>var webpack = require(&apos;webpack&apos;)
+
+module.exports = {
+    output: {
+        path: __dirname,
+        filename: &apos;[name].bundle.js&apos;,
+    },
+    entry: {
+        app: [&apos;./app.js&apos;]
+    },
+    plugins: [
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require(&apos;./dll/test-manifest.json&apos;),
+            sourceType: &apos;commonjs2&apos;,
+            name: &apos;./dll/test.js&apos;
+        })
+    ]
+}
+</code></pre></li>
+</ol>
+<h3 id="BugFixed"><a href="#BugFixed" class="headerlink" title="BugFixed"></a>BugFixed</h3><p>配置中常可能会出现的问题：</p>
+<ol>
+<li><p><a href="https://github.com/webpack/webpack/issues/2875">vendor not defined</a> : 模块没有在html中引入，在根目录文件夹中加入script标签引入dll文件。</p>
+</li>
+<li><p>打包时间没有变快： 检查下<code>webpack.config.js</code>的<code>context</code>是否和<code>webpack.config.js</code>的一致，不一致的话保持一致，一般这个context的默认值是开发项目的根路径。</p>
+</li>
+</ol>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="https://medium.com/@soederpop/webpack-plugins-been-we-been-keepin-on-the-dll-cdfdd6cb8cd7" target="_blank" rel="external">Webpack Plugins we been keepin on the DLL</a></li>
+</ol>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
 </div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+</div>
+
+            
+    
+        <a href="http://github.com/2017/05/24/提高webpack构建效率之DLLPlugin/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://github.com/2017/05/24/提高webpack构建效率之DLLPlugin/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/04/26/php-安装和开启外部扩展库/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">php 安装和开启外部扩展库</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
 </section>
             
                 <aside id="sidebar">
@@ -428,11 +678,13 @@
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = 'undefined';
+            this.page.url = 'http://github.com/2017/05/24/提高webpack构建效率之DLLPlugin/';
+        
+        this.page.identifier = '提高webpack构建效率之DLLPlugin';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'ceceliaa' + '.disqus.com/count.js';
+        s.src = '//' + 'ceceliaa' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
