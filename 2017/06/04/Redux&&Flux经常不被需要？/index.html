@@ -3,14 +3,69 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Archive: 2017/3 | Cecelia&#39;s BLOG</title>
+    <title>经常不被需要 | Cecelia&#39;s BLOG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Cecelia's BLOG">
-<meta property="og:url" content="http://github.com/archives/2017/03/index.html">
+    <meta name="description" content="Redux/Flux 经常不被需要？
+原文地址：Redux/Flux is often (usually?) not needed
+时间: 2017/6/4
+
+目录
+
+Redux/Flux 经常不被需要？
+目录
+前言
+后台CRUD应用
+那么什么时候应该使用Redux?
+我的建议
+结论
+
+
+
+
+前言我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用Re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="经常不被需要">
+<meta property="og:url" content="http://github.com/2017/06/04/Redux&&Flux经常不被需要？/index.html">
 <meta property="og:site_name" content="Cecelia's BLOG">
+<meta property="og:description" content="Redux/Flux 经常不被需要？
+原文地址：Redux/Flux is often (usually?) not needed
+时间: 2017/6/4
+
+目录
+
+Redux/Flux 经常不被需要？
+目录
+前言
+后台CRUD应用
+那么什么时候应该使用Redux?
+我的建议
+结论
+
+
+
+
+前言我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用Re">
+<meta property="og:updated_time" content="2017-06-04T10:59:14.738Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cecelia's BLOG">
+<meta name="twitter:title" content="经常不被需要">
+<meta name="twitter:description" content="Redux/Flux 经常不被需要？
+原文地址：Redux/Flux is often (usually?) not needed
+时间: 2017/6/4
+
+目录
+
+Redux/Flux 经常不被需要？
+目录
+前言
+后台CRUD应用
+那么什么时候应该使用Redux?
+我的建议
+结论
+
+
+
+
+前言我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用Re">
     
 
     
@@ -205,76 +260,174 @@
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2017</h1>
-            </div>
+            <section id="main"><article id="redux/flux-Redux&amp;&amp;Flux经常不被需要？" class="article article-type-redux/flux" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/03/24/linux-常用命令/">linux 常用命令</a>
+        <h1 class="article-title" itemprop="name">
+            经常不被需要
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/03/24/linux-常用命令/">
-            <time datetime="2017-03-24T13:57:01.000Z" itemprop="datePublished">2017-03-24</time>
+        <a href="/2017/06/04/Redux&&Flux经常不被需要？/">
+            <time datetime="2017-06-04T10:57:30.000Z" itemprop="datePublished">2017-06-04</time>
         </a>
     </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/linux/">linux</a>
-    </div>
-
-                    
+                        
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/linux/">linux</a>
+        <a class="tag-link" href="/tags/Redux-Flux-React/">Redux Flux React</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Redux-Flux-经常不被需要？"><a href="#Redux-Flux-经常不被需要？" class="headerlink" title="Redux/Flux 经常不被需要？"></a>Redux/Flux 经常不被需要？</h1><blockquote>
+<p>原文地址：<a href="https://medium.com/@daveford/redux-flux-is-often-usually-not-needed-13c734b416cd" target="_blank" rel="external">Redux/Flux is often (usually?) not needed</a></p>
+<p>时间: 2017/6/4</p>
+</blockquote>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><!-- TOC -->
+<ul>
+<li><a href="#reduxflux-经常不被需要">Redux/Flux 经常不被需要？</a></li>
+<li><a href="#目录">目录</a><ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#后台crud应用">后台CRUD应用</a></li>
+<li><a href="#那么什么时候应该使用redux">那么什么时候应该使用Redux?</a></li>
+<li><a href="#我的建议">我的建议</a></li>
+<li><a href="#结论">结论</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用React的团队一起工作，所以我相当了解他们遇到的问题。而且，人们使用React遇到的前10的问题，没有一个是使用Redux和Flux解决的。</p>
+<p><em>附注：Flux是一种模式，而Redux是实现这种模式的框架。实际上，在这篇文章中我是在谈论两者。</em></p>
+<p>我不是唯一一个提出此观点的人。下面是引用Pete Hunt(React 创建者之一)的一段话：</p>
+<blockquote>
+<p>很多开发者一坐下开始开发一个应用并且定义他们的数据模型，他们认为他们需要使用Flux来做这些。这是错误的采用Flux的方法。</p>
+</blockquote>
+<p>下面是篇博文来自 Dan Abramov，Redux的创建者，基本上说的是同样的事情。<a href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367" target="_blank" rel="external">你可能不需要Redux</a>。这是他唯一一篇保持置顶的博文。</p>
+<p>下面一段引文来自 Ryan Florence, 一个在 React 生态系统有受人尊重的很大的成就和会议频繁发言人:</p>
+<blockquote>
+<p>Flux 阻碍了React的创新：让所有人再次回到事件和‘模板’并且熟悉数据的改变。</p>
+</blockquote>
+<h2 id="后台CRUD应用"><a href="#后台CRUD应用" class="headerlink" title="后台CRUD应用"></a>后台CRUD应用</h2><p>有一类明确的应用，我认为不需要Redux: 传统的业务CRUD应用。我的许多客户和学生属于这一类。此类的应用有成百个页面，每一个都有他们自己的路由。但是这些页面中的大多数可以单机显示，而且主要通过数据库集成。所以当此类应用作为一个整体的时候可能会非常复杂，作为单页面的时候就不是这样复杂。不像Facebook那样复杂。</p>
+<h2 id="那么什么时候应该使用Redux"><a href="#那么什么时候应该使用Redux" class="headerlink" title="那么什么时候应该使用Redux?"></a>那么什么时候应该使用Redux?</h2><p>如果我有更多时间，我愿意探讨究竟Redux解决了什么问题和什么场景使用它的细节。但是我愿意把它留在下篇博文中。<br>但是通常，当客户开始列举他们需要Redux的原因时，我经常可以告诉他们怎样使用传统的纯React并且使用更少的操作。</p>
+<h2 id="我的建议"><a href="#我的建议" class="headerlink" title="我的建议"></a>我的建议</h2><p>等待直到你的应用组件复杂,并且你遇到一些特定的问题，而且该问题你确定可以用Redux解决，再使用Redux。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>总之，我会说Redux不应该被作为大多数应用的默认选择，特别是，我的学生和客户创建的大多数应用。我认为在投身于Redux之前，至少有100件事情他们应该学习。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+</div>
+
+            
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/03/06/hello-world/">Hello World</a>
-        </h1>
+        <a href="http://github.com/2017/06/04/Redux&&Flux经常不被需要？/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://github.com/2017/06/04/Redux&amp;&amp;Flux经常不被需要？/">Comments</a>
     
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/06/hello-world/">
-            <time datetime="2017-03-06T15:37:41.973Z" itemprop="datePublished">2017-03-06</time>
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/05/24/提高webpack构建效率之DLLPlugin/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">提高webpack构建效率之DLLPlugin</div>
         </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
-
-                    
-                    
-                </div>
-            </div>
-        </div>
     
-</div>
+    </section>
+
 </section>
             
                 <aside id="sidebar">
@@ -454,11 +607,13 @@
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = 'undefined';
+            this.page.url = 'http://github.com/2017/06/04/Redux&amp;&amp;Flux经常不被需要？/';
+        
+        this.page.identifier = 'Redux&amp;&amp;Flux经常不被需要？';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'ceceliaa' + '.disqus.com/count.js';
+        s.src = '//' + 'ceceliaa' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
