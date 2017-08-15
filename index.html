@@ -208,6 +208,140 @@
 
             
             <section id="main">
+    <article id="post-linux如何访问外网？" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/15/linux如何访问外网？/">linux如何访问外网？</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/15/linux如何访问外网？/">
+            <time datetime="2017-08-15T15:05:51.000Z" itemprop="datePublished">2017-08-15</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/linux/">linux</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><img src="/2017/08/15/linux如何访问外网？/5.jpg" alt="Today is another day!" title="Today is another day!">
+<p>新配置的一台linux, 环境装上了，但是yum这些命令什么的一直连接不上，服务一直报<code>Connection failed</code>， 这种情况可以尝试下<code>ping baidu.com</code>，看看返回结果，如果识别或者解析不了，那么就应该是linux访问不到外网的问题。</p></p>
+            <p class="article-more-link">
+                <a href="/2017/08/15/linux如何访问外网？/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://cc2victoria.github.io/2017/08/15/linux如何访问外网？/" data-id="cj6dszd0h0008doa1ak3nr9ak" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://cc2victoria.github.io/2017/08/15/linux如何访问外网？/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://cc2victoria.github.io/2017/08/15/linux如何访问外网？/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-React-组件解耦之道（译）" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -250,7 +384,8 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p><img src="http://blog.zhangruipeng.me/hexo-theme-icarus/gallery/salt-lake.jpg" alt=""><br>React组件非常灵活可扩展，不过随着业务复杂度的增加和许多外部工具库的引入，组件会随着时间的推移而更加庞大，最终往往会变得浮肿。<a href="随着许多外部工具库的引入，组件会非常容易的随着时间的迁移而更加庞大，变得浮肿和拥有更复杂的逻辑。"></a></p></p>
+            <p><img src="/2017/07/08/React-组件解耦之道（译）/5.jpg" alt="To be or not to be, that is a question." title="To be or not to be, that is a question.">
+<p>React组件非常灵活可扩展，不过随着业务复杂度的增加和许多外部工具库的引入，组件会随着时间的推移而更加庞大，最终往往会变得浮肿。<a href="随着许多外部工具库的引入，组件会非常容易的随着时间的迁移而更加庞大，变得浮肿和拥有更复杂的逻辑。"></a></p></p>
             <p class="article-more-link">
                 <a href="/2017/07/08/React-组件解耦之道（译）/#more">Read More</a>
             </p>
@@ -263,7 +398,7 @@
 
 </div>
 
-    <a data-url="http://cc2victoria.github.io/2017/07/08/React-组件解耦之道（译）/" data-id="cj63th5260002aca1vcxescce" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://cc2victoria.github.io/2017/07/08/React-组件解耦之道（译）/" data-id="cj6dszczx0002doa18a6zp7ws" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -383,40 +518,15 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <h1 id="Redux-Flux-经常不被需要？"><a href="#Redux-Flux-经常不被需要？" class="headerlink" title="Redux/Flux 经常不被需要？"></a>Redux/Flux 经常不被需要？</h1><blockquote>
-<p>原文地址：<a href="https://medium.com/@daveford/redux-flux-is-often-usually-not-needed-13c734b416cd" target="_blank" rel="external">Redux/Flux is often (usually?) not needed</a></p>
+            <p><img src="/2017/06/04/Redux&&Flux经常不被需要？/5.jpg" alt="Winter is comming!" title="Winter is comming!">
+<h1 id="Redux-Flux-经常不被需要？"><a href="#Redux-Flux-经常不被需要？" class="headerlink" title="Redux/Flux 经常不被需要？"></a>Redux/Flux 经常不被需要？</h1><blockquote>
+<p>原文地址：<a href="https://medium.com/@daveford/redux-flux-is-often-usually-not-needed-13c734b416cd">Redux/Flux is often (usually?) not needed</a></p>
 <p>时间: 2017/6/4</p>
 </blockquote>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><!-- TOC -->
-<ul>
-<li><a href="#reduxflux-经常不被需要">Redux/Flux 经常不被需要？</a></li>
-<li><a href="#目录">目录</a><ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#后台crud应用">后台CRUD应用</a></li>
-<li><a href="#那么什么时候应该使用redux">那么什么时候应该使用Redux?</a></li>
-<li><a href="#我的建议">我的建议</a></li>
-<li><a href="#结论">结论</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用React的团队一起工作，所以我相当了解他们遇到的问题。而且，人们使用React遇到的前10的问题，没有一个是使用Redux和Flux解决的。</p>
-<p><em>附注：Flux是一种模式，而Redux是实现这种模式的框架。实际上，在这篇文章中我是在谈论两者。</em></p>
-<p>我不是唯一一个提出此观点的人。下面是引用Pete Hunt(React 创建者之一)的一段话：</p>
-<blockquote>
-<p>很多开发者一坐下开始开发一个应用并且定义他们的数据模型，他们认为他们需要使用Flux来做这些。这是错误的采用Flux的方法。</p>
-</blockquote>
-<p>下面是篇博文来自 Dan Abramov，Redux的创建者，基本上说的是同样的事情。<a href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367" target="_blank" rel="external">你可能不需要Redux</a>。这是他唯一一篇保持置顶的博文。</p>
-<p>下面一段引文来自 Ryan Florence, 一个在 React 生态系统有受人尊重的很大的成就和会议频繁发言人:</p>
-<blockquote>
-<p>Flux 阻碍了React的创新：让所有人再次回到事件和‘模板’并且熟悉数据的改变。</p>
-</blockquote>
-<h2 id="后台CRUD应用"><a href="#后台CRUD应用" class="headerlink" title="后台CRUD应用"></a>后台CRUD应用</h2><p>有一类明确的应用，我认为不需要Redux: 传统的业务CRUD应用。我的许多客户和学生属于这一类。此类的应用有成百个页面，每一个都有他们自己的路由。但是这些页面中的大多数可以单机显示，而且主要通过数据库集成。所以当此类应用作为一个整体的时候可能会非常复杂，作为单页面的时候就不是这样复杂。不像Facebook那样复杂。</p>
-<h2 id="那么什么时候应该使用Redux"><a href="#那么什么时候应该使用Redux" class="headerlink" title="那么什么时候应该使用Redux?"></a>那么什么时候应该使用Redux?</h2><p>如果我有更多时间，我愿意探讨究竟Redux解决了什么问题和什么场景使用它的细节。但是我愿意把它留在下篇博文中。<br>但是通常，当客户开始列举他们需要Redux的原因时，我经常可以告诉他们怎样使用传统的纯React并且使用更少的操作。</p>
-<h2 id="我的建议"><a href="#我的建议" class="headerlink" title="我的建议"></a>我的建议</h2><p>等待直到你的应用组件复杂,并且你遇到一些特定的问题，而且该问题你确定可以用Redux解决，再使用Redux。</p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>总之，我会说Redux不应该被作为大多数应用的默认选择，特别是，我的学生和客户创建的大多数应用。我认为在投身于Redux之前，至少有100件事情他们应该学习。</p>
-
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用React的团队一起工作，所以我相当了解他们遇到的问题。而且，人们使用React遇到的前10的问题，没有一个是使用Redux和Flux解决的。<br></p>
+            <p class="article-more-link">
+                <a href="/2017/06/04/Redux&&Flux经常不被需要？/#more">Read More</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -426,7 +536,7 @@
 
 </div>
 
-    <a data-url="http://cc2victoria.github.io/2017/06/04/Redux&&Flux经常不被需要？/" data-id="cj63th52k0006aca1v4qtur4j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://cc2victoria.github.io/2017/06/04/Redux&&Flux经常不被需要？/" data-id="cj6dszd0b0006doa1c0xj3zdc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -546,154 +656,11 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p><code>webpack</code>是一个将前端资源模块化打包的工具。借助该工具，我们在项目开发的过程中，可以更便宜的处理模块间的依赖关系。而<code>commonjs</code>的模块和ES6的处理代码必须在浏览器使用前，经过webpack的构建。</p>
-<p>模块会随着项目的进展而逐渐增多，随之webpack打包的时间也会加长。最近开发的项目，经过基本的优化，打包的时间已经超过<code>120s</code>, 而改动代码后，至少也要<code>10s</code>页面才能重新刷新。如此，开阿发效率大大降低。</p>
-<h3 id="2-CommonsChunkPlugin"><a href="#2-CommonsChunkPlugin" class="headerlink" title="2. CommonsChunkPlugin"></a>2. CommonsChunkPlugin</h3><p>分析了下(这儿可以贴张图)，主要占打包资源的是依赖的<code>React</code>，<code>axios</code>、<code>semantic-react-ui</code>等等引入的包依赖，在执行<code>node webpack.config.js</code>的时候，所有的依赖都会重新打包一遍。之前我采用的是<code>CommonsChunkPlugin</code>来对相同的模块，单独提取出来打包，进而减小rebuild的性能。</p>
-<pre><code>var config = {
-  // 入口文件
-  entry: {
-    app: [&apos;./index.js&apos;],
-    lib: [
-       &apos;react&apos;, &apos;react-dom&apos;, &apos;react-router&apos;,
-       &apos;redux&apos;, &apos;react-redux&apos;, &apos;redux-thunk&apos;
-     ],
-  },
-  output: {
-    path: &apos;./&apos;,
-    filename: &apos;[name].js&apos;,
-  },
-  plugins: [
-    // 提取共同模块
-    new webpack.optimize.CommonsChunkPlugin({
-       names: [&apos;lib&apos;, &apos;app&apos;]
-    }),
-  ]
-}
-</code></pre><p>然而<code>CommonsChunkPlugin</code>只在<code>rebuild</code>的时候有一点效果，初次运行的时间仍然没有变。</p>
-<p>网上搜索加上实际操作，终于让我找到了解决方法。</p>
-<h3 id="3-DLL-amp-DllReference"><a href="#3-DLL-amp-DllReference" class="headerlink" title="3. DLL &amp; DllReference"></a>3. DLL &amp; DllReference</h3><h4 id="DLL"><a href="#DLL" class="headerlink" title="DLL"></a>DLL</h4><blockquote>
-<p>DLL 插件不执行任何模块的代码，只是引入模块。最终导出一个可以用于通过id（内部引入函数）来引入模块的函数和一个被写入特殊位置的<code>manifest.json</code>文件，该文件包含实际请求到模块id的映射。</p>
-</blockquote>
-<p><em>详细参考 <a href="https://github.com/webpack/docs/wiki/list-of-plugins#dllplugin" target="_blank" rel="external">dllplugin</a></em></p>
-<p>该插件结合<code>output.library</code>选项，使dll方法可以在全局范围内使用。</p>
-<p><strong>webpack.dll.js</strong></p>
-<pre><code>new DllPlugin({
-  path: path.join(__dirname, &quot;manifest.json&quot;),
-  name: &quot;[name]_[hash]&quot;,
-  context: __dirname
-})
-</code></pre><ul>
-<li><code>path</code> : manifest文件生成的位置，绝对路径</li>
-<li><code>name</code> : dll 方法的名称（与 output.library 保持一致）</li>
-<li><code>context (可选)</code> : manifest文件中请求（对模块的引入请求）的上下文环境，默认与webpack环境保持一致</li>
-</ul>
-<h4 id="DllReference"><a href="#DllReference" class="headerlink" title="DllReference"></a>DllReference</h4><blockquote>
-<p>ss</p>
-</blockquote>
-<p><em>详细参考 <a href="https://github.com/webpack/docs/wiki/list-of-plugins#dllreferenceplugin" target="_blank" rel="external">dllreferenceplugin</a></em></p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code>new DllReferencePlugin({
-  context: __dirname,
-  scope: &quot;xyz&quot;,
-  manifest: require(&quot;./manifest.json&quot;),
-  name: &quot;./my-dll.js&quot;,
-  sourceType: &quot;commonsjs2&quot;,
-  content: { ... }
-})
-</code></pre><ul>
-<li><code>context</code>: (absolute path) context of requests in the manifest (or content property)</li>
-<li><code>scope</code> (optional): prefix which is used for accessing the content of the dll<br>manifest (object): an object containing content and name</li>
-<li><code>name</code> (optional): the name where the dll is exposed (defaults to manifest.name) (see also externals)</li>
-<li><code>sourceType</code> (optional): the type how the dll is exposed (defaults to “var”) (see also externals)</li>
-<li><code>content</code> (optional): the mappings from request to module id (defaults to manifest.content)</li>
-</ul>
-<h3 id="4-实际操作"><a href="#4-实际操作" class="headerlink" title="4. 实际操作"></a>4. 实际操作</h3><ol>
-<li><p>在根目录单独建立一个 <code>webpack.dll.js</code></p>
-<pre><code>var webpack = require(&apos;webpack&apos;)
-
-module.exports = {
-    output: {
-        path: &apos;./dll&apos;,
-        filename: &apos;[name].js&apos;,
-        /**
-         * output.library
-         * 将会定义为 window.${output.library}
-         * 在这次的例子中，将会定义为`window.vendor_library`
-         */
-        library: &apos;[name]_library&apos;,
-        libraryTarget: &apos;commonjs2&apos;
-    },
-    entry: {
-        // 入口，依赖的外部模块
-        vendor: [
-          &apos;react&apos;, &apos;react-dom&apos;, &apos;react-router&apos;, &apos;redux&apos;, &apos;react-redux&apos;, 
-          &apos;redux-thunk&apos;, &apos;semantic-ui-react&apos;, &apos;lodash&apos;, &apos;echarts&apos;, &apos;axios&apos;
-        ]
-    },
-    plugins: [
-        new webpack.DllPlugin({
-           /**
-            * path
-            * 定义 manifest 文件生成的位置
-            * [name]的部分由entry的名字替换
-            */
-            path: &apos;./dll/[name]-manifest.json&apos;,
-           /**
-            * name
-            * dll bundle 输出到那个全局变量上
-            * 和 output.library 一样即可。 
-            */
-            name: &apos;[name]&apos;,
-            context: __dirname
-        })
-    ]
-}
-</code></pre></li>
-</ol>
-<ol>
-<li><p>生成dll文件 </p>
-<p> 执行<code>./node_modules/.bin/webpack --config build/webpack.config.js</code>。</p>
-<p> 请在每次依赖的模块更改时重新执行这个命令</p>
-</li>
-<li><p>在<code>index.html</code>中引入dll文件</p>
-<p> <em>这一步必不可少，之前因为少了这一步，一直报 vendor_library not defined</em></p>
-<pre><code>//这个模块的引入必须在自定义文件的入口之前
-&lt;script src=&quot;dist/dll/vendor.dll.js&quot;&gt;&lt;/script&gt;
-</code></pre></li>
-<li><p><code>webpack.config.js</code></p>
-<pre><code>var webpack = require(&apos;webpack&apos;)
-
-module.exports = {
-    output: {
-        path: __dirname,
-        filename: &apos;[name].bundle.js&apos;,
-    },
-    entry: {
-        app: [&apos;./app.js&apos;]
-    },
-    plugins: [
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: require(&apos;./dll/test-manifest.json&apos;),
-            sourceType: &apos;commonjs2&apos;,
-            name: &apos;./dll/test.js&apos;
-        })
-    ]
-}
-</code></pre></li>
-</ol>
-<h3 id="BugFixed"><a href="#BugFixed" class="headerlink" title="BugFixed"></a>BugFixed</h3><p>配置中常可能会出现的问题：</p>
-<ol>
-<li><p><a href="https://github.com/webpack/webpack/issues/2875" target="_blank" rel="external">vendor not defined</a> : 模块没有在html中引入，在根目录文件夹中加入script标签引入dll文件。</p>
-</li>
-<li><p>打包时间没有变快： 检查下<code>webpack.config.js</code>的<code>context</code>是否和<code>webpack.config.js</code>的一致，不一致的话保持一致，一般这个context的默认值是开发项目的根路径。</p>
-</li>
-</ol>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
-<li><a href="https://medium.com/@soederpop/webpack-plugins-been-we-been-keepin-on-the-dll-cdfdd6cb8cd7" target="_blank" rel="external">Webpack Plugins we been keepin on the DLL</a></li>
-</ol>
-
+            <p><img src="/2017/05/24/提高webpack构建效率之DLLPlugin/5.jpg" alt="Is life always this hard, or is it just when you're a kid?" title="Is life always this hard, or is it just when you're a kid?">
+<h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p><code>webpack</code>是一个将前端资源模块化打包的工具。借助该工具，我们在项目开发的过程中，可以更便宜的处理模块间的依赖关系。而<code>commonjs</code>的模块和ES6的处理代码必须在浏览器使用前，经过webpack的构建。<br></p>
+            <p class="article-more-link">
+                <a href="/2017/05/24/提高webpack构建效率之DLLPlugin/#more">Read More</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -703,7 +670,7 @@ module.exports = {
 
 </div>
 
-    <a data-url="http://cc2victoria.github.io/2017/05/24/提高webpack构建效率之DLLPlugin/" data-id="cj63th532000eaca1w7akdfep" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://cc2victoria.github.io/2017/05/24/提高webpack构建效率之DLLPlugin/" data-id="cj6dszd0s000edoa17elf2hf3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -823,55 +790,12 @@ module.exports = {
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <h1 id="php-安装和开启外部扩展库"><a href="#php-安装和开启外部扩展库" class="headerlink" title="php 安装和开启外部扩展库"></a>php 安装和开启外部扩展库</h1><p>不得不说，由于php的扩展问题，我在安装和运行php相关项目的时候遇到了很多的坑。例如之前搭建php的<code>Laravel</code>框架，以及最近搭建的 <a href="https://www.phpmyadmin.net/" target="_blank" rel="external">phpmyadmin</a>项目，都遇到了不少缺少库的问题：由于缺少像<code>openssl</code>、<code>mysqli</code>、<code>postgres</code>等外部扩展库，导致程序不能正常运行。但是我们项目通常用到的php是已经编译好的，而且服务器上的安装包的外部扩展不是很全。所以不能通过重新编译php的办法来解决这个问题，且重新编译的话可能导致其他很多的问题。</p>
-<p>是不是很绝望？</p>
-<p>经过一番折腾，终于找到解决方法，整理如下：</p>
-<h2 id="检测扩展"><a href="#检测扩展" class="headerlink" title="检测扩展"></a>检测扩展</h2><p>首先检查下扩展有没有加载，如果已经加载了，那基本是99%的可能性确定问题不是出现在扩展库这个地方了。</p>
-<h3 id="phpinfo"><a href="#phpinfo" class="headerlink" title="phpinfo()"></a>phpinfo()</h3><p>利用<code>phpinfo()</code>这个方法可以查看当前安装的php包含的扩展有哪些。</p>
-<h3 id="bugfixed"><a href="#bugfixed" class="headerlink" title="bugfixed"></a>bugfixed</h3><p>在安装的时候我遇到了一个很难发现的bug: 在linux端通过<code>php -m</code>命令，我看到了一些我已经安装的扩展，但是在浏览器端通过<code>phpinfo()</code>方法，却发现缺少很多已经安装的库。后来找到原因，<code>Apache</code>中配置的<code>php.ini</code>的位置不对。如果出现类似的问题，不妨检查下<code>Apache</code>根目录下<code>conf</code>文件夹中的<code>http.conf</code>的配置是否正确</p>
-<h2 id="安装和开启"><a href="#安装和开启" class="headerlink" title="安装和开启"></a>安装和开启</h2><p>废话辣么多，终于可以开始说正题了。windows环境新增外部扩展的方法请参考<a href="http://www.haorooms.com/post/php_openssl" target="_blank" rel="external">php开启openssl的方法,openssl安装</a>。本文主要介绍<code>linux centos7</code>的安装方法。</p>
-<p>php版本： php-5.6.4</p>
-<p>这个地方由于我们服务器上的安装包内的文件不是很全，官网上下载也不是很方便，所以这个地方推荐用搜狐的镜像来下载。地址为：<a href="http://mirrors.sohu.com/php/" target="_blank" rel="external">http://mirrors.sohu.com/php/</a></p>
-<p>首先，进入到我们的主机：</p>
-<pre><code># 下载对应的php到/opt/php目录下
-
-cd /opt/php
-
-wget http://mirrors.sohu.com/php/php-5.6.4.tar.gz
-
-# 解压
-
-tar zxvf php-5.6.4.tar.gz
-
-# 进入PHP的openssl扩展模块目录
-
-cd php-5.6.4/ext/openssl/
-
-/opt/php/bin/phpize # 这里为你自己的phpize路径，如果找不到，使用whereis phpize查找
-
-# 执行后，发现错误 无法找到config.m4 ，config0.m4就是config.m4。直接重命名
-
-mv config0.m4 config.m4
-
-/opt/php/bin/phpize
-
-./configure --with-openssl --with-php-config=/opt/php/bin/php-config
-
-make
-
-make install
-
-# 安装完成后，会返回一个.so文件（openssl.so）的目录。在此目录下把openssl.so 文件拷贝到你在php.ini 中指定的 extension_dir 下（在php.ini文件中查找：extension_dir =），我这里的目录是 var/www/php5/lib/php/extensions
-
-# 编辑php.ini文件，在文件最后添加
-
-extension=openssl.so
-
-# 重启Apache即可
-
-/opt/apache2/bin/httpd restart
-</code></pre>
+            <p><img src="/2017/04/26/php-安装和开启外部扩展库/5.jpg" alt="To the world you may be one person, but to one person you may be the world!" title="To the world you may be one person, but to one person you may be the world!">
+<h1 id="php-安装和开启外部扩展库"><a href="#php-安装和开启外部扩展库" class="headerlink" title="php 安装和开启外部扩展库"></a>php 安装和开启外部扩展库</h1><p>不得不说，由于php的扩展问题，我在安装和运行php相关项目的时候遇到了很多的坑。例如之前搭建php的<code>Laravel</code>框架，以及最近搭建的 <a href="https://www.phpmyadmin.net/">phpmyadmin</a>项目，都遇到了不少缺少库的问题：由于缺少像<code>openssl</code>、<code>mysqli</code>、<code>postgres</code>等外部扩展库，导致程序不能正常运行。但是我们项目通常用到的php是已经编译好的，而且服务器上的安装包的外部扩展不是很全。所以不能通过重新编译php的办法来解决这个问题，且重新编译的话可能导致其他很多的问题。</p>
+<p>是不是很绝望？<br></p>
+            <p class="article-more-link">
+                <a href="/2017/04/26/php-安装和开启外部扩展库/#more">Read More</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -881,7 +805,7 @@ extension=openssl.so
 
 </div>
 
-    <a data-url="http://cc2victoria.github.io/2017/04/26/php-安装和开启外部扩展库/" data-id="cj63th530000caca1qpuccfjm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://cc2victoria.github.io/2017/04/26/php-安装和开启外部扩展库/" data-id="cj6dszd0o000cdoa18ylt69hy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1001,8 +925,8 @@ extension=openssl.so
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <ul>
+            <p><img src="/2017/03/24/linux-常用命令/5.jpg" alt="To be or not to be, that is a question." title="To be or not to be, that is a question.">
+<ul>
 <li>基本软件：<ul>
 <li>拷贝  apache ngnix php </li>
 <li>common 一键安装环境<ul>
@@ -1013,89 +937,10 @@ extension=openssl.so
 </li>
 <li>添加执行权限 <ul>
 <li>chmod +x 可执行 w 写 r读 d目录</li>
-<li>chmod +755  </li>
-</ul>
-</li>
-<li>执行<ul>
-<li>./install.sh ()</li>
-<li>默认系统执行权限（不推荐）：<code>/bin/ssh install.sh</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>查看执行脚本<ul>
-<li>apache启动脚本 danahttpd</li>
-</ul>
-</li>
-<li>查看指令详细信息，以ps为例 <ul>
-<li>man ps</li>
-<li>ps –help</li>
-</ul>
-</li>
-<li>ps 命令使用（查看服务是否启动）<ul>
-<li>s</li>
-<li>ystemctl status danahttpd</li>
-<li>ps aux | grep dana | grep -v grep</li>
-<li>ps -ef | grep dana</li>
-</ul>
-</li>
-<li>启动服务<ul>
-<li>systemctl start 服务名</li>
-<li>进入 init.d目录下，通过 ./ 启动 如： <code>./ngnix restart</code></li>
-</ul>
-</li>
-<li>ngnix 位置 /etc/ngnix/ngnix.d <strong>可以通过安装脚本查看</strong></li>
-<li>vim<ul>
-<li>：set nu 设置代码行号</li>
-<li>非插入状态： <code>行数 + G</code> 如：80 G</li>
-<li>访问底部 <code>G + shift</code></li>
-<li>访问顶部 <code>gg</code></li>
-<li>退出 <code>：wq :q :q!</code></li>
-</ul>
-</li>
-<li>远程传输 scp<ul>
-<li>拷贝 cp 和 scp（建议用于单个文件拷贝）</li>
-<li>scp 文件 root@192.168.1.203:/home</li>
-<li>scp -P 端口号 sr（源文件） dest（目标文件）<ul>
-<li><code>scp -P 5222 root@180.168.94.118:/jp,e/test.file /home/</code> </li>
-<li><code>scp -P 5222 root@180.168.94.118:/home/test.file root@192.168.1.3:/home/</code> (端口必须一致)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>远程连接 ssh    </li>
-<li>安装 yum install XXX<ul>
-<li><code>yum search mysql</code> (查找版本 安装时补全版本号) </li>
-<li><code>yum update</code>（更新安装仓库）</li>
-<li>安装对应安装包目录 <code>/var/cache/yum/xb6_64</code></li>
-</ul>
-</li>
-<li>安装.rpm 格式的文件 <code>rpm -ivh xxx.rpm</code><ul>
-<li>查看软件是否安装： <code>rpm -qa|grep python</code></li>
-<li>删除 <code>rpm -e xxx</code> </li>
-</ul>
-</li>
-<li>查看端口号活动 <code>netstat</code><ul>
-<li><code>netstat -anp|grep cayman</code></li>
-</ul>
-</li>
-<li>挂载<ul>
-<li>查看挂载 <code>lsbsk</code>    </li>
-<li>格式化   <code>mkfs.xfs -f /dev/sdd</code></li>
-<li>挂载  <code>mount /dev/sdd /home/</code> </li>
-<li>查看挂载 <code>df -hT</code> </li>
-</ul>
-</li>
-<li>软连接 -s <ul>
-<li><code>ln -s dest sr</code></li>
-</ul>
-</li>
-<li>查看主机名称 <code>/etc/hosts</code></li>
-<li>查看ssh的信息 <code>/etc/.ssh/</code></li>
-</ul>
-</li>
-</ul>
-
+<li>chmod +755</p>
+            <p class="article-more-link">
+                <a href="/2017/03/24/linux-常用命令/#more">Read More</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -1105,7 +950,7 @@ extension=openssl.so
 
 </div>
 
-    <a data-url="http://cc2victoria.github.io/2017/03/24/linux-常用命令/" data-id="cj63th52r0008aca1xaknq5lw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://cc2victoria.github.io/2017/03/24/linux-常用命令/" data-id="cj6dszd0e0007doa1eo6z3p7g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1183,136 +1028,6 @@ extension=openssl.so
 
 
 
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/06/hello-world/">Hello World</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/06/hello-world/">
-            <time datetime="2017-03-06T15:37:41.973Z" itemprop="datePublished">2017-03-06</time>
-        </a>
-    </div>
-
-
-                        
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://cc2victoria.github.io/2017/03/06/hello-world/" data-id="cj63th52n0007aca1lsh7t65y" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://cc2victoria.github.io/2017/03/06/hello-world/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://cc2victoria.github.io/2017/03/06/hello-world/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <article id="post-React-知识图谱" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1355,44 +1070,12 @@ extension=openssl.so
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <p>#React 知识学习图谱</p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>由于目前的项目还是使用传统的架构和前端技术。在从特点，应用场景和实战应用几个方面考虑，决定采用React技术栈：<a href="https://tower.im/projects/4bbc9d2219bd48afbe4639e1f3612e5c/todos/6f2ffab75dbf4c548a89757501b44854/" target="_blank" rel="external">前端技术选型</a>。</p>
-<h2 id="React-知识图谱"><a href="#React-知识图谱" class="headerlink" title="React 知识图谱"></a>React 知识图谱</h2><p>从项目的实际角度出发，列出了如下React的知识学习图谱：<br><img src="http://i.imgur.com/s0HyeWo.png" alt=""></p>
-<p>根据以上图谱顺序，列出React项目学习路线如下:</p>
-<ol>
-<li><p><a href="">01 React 基础知识</a></p>
-</li>
-<li><p><a href="">02 Babel 转码</a>: <em>项目必须</em>。可以直接在js代码中引入，也可以通过命令行将代码转码。</p>
-</li>
-<li><p><a href="">03 路由</a>：<em>非项目必须</em>。主要应用于单页面程序中，管理地址栏。实现页面的路由的映射，参数的解析和传递。</p>
-</li>
-<li><p>04 React 工程化</p>
-<ul>
-<li><a href="">03-1 ES6新特性</a>：<em>非项目必需</em>。作为<code>Javascript</code>的最新发布的标准，ES6的新特性和新接口可以让代码更加简洁和优美。<code>ES6</code>新增模块部分跟<code>React</code>的设计能更好的契合。</li>
-<li><a href="">03-2 服务端</a><ul>
-<li>Node：非项目必须。但是如果要用<code>JS</code>来写服务端程序，则需要<code>Node</code>。</li>
-<li>NPM：非项目必须。<code>NPM</code>是包管理工具，可以通过NPM来安装项目的一些依赖和管理依赖的版本。</li>
-</ul>
-</li>
-<li><a href="">03-3 打包编译</a>：<em>非项目必须</em>。<code>webpack</code>是模块打包和编译工具，主要功能是产品化和模块打包以及将代码编译成浏览器或者<code>Node</code>可识别的代码。</li>
-</ul>
-</li>
-<li><p><a href="">Flux 架构</a>:<em>非项目必须。<code>React</code>只是DOM的抽象层，所以它只能作为应用架构的视图层。而</em><code>Flux</code>是一种项目应用架构，最大的特点是数据单向流动，如下图：</p>
-<p> <img src="http://i.imgur.com/x6T2u5I.png" alt=""></p>
-<p> 架构的主要作用是管理 Store 和 View 之间的关系。</p>
-</li>
-<li><p><a href="">06 React组件库的使用方法</a>：React 有很多第三方插件库，如：Bootstrap，D3。第三方插件库的引入和使用，使项目必须。</p>
-</li>
-<li><p><a href="">07 React测试和性能工具</a>:<em>非项目必需。</em>当项目运行到慢慢变得比较大的时候，对于前端性能的分析和代码的测试就变得有必要了</p>
-</li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://github.com/petehunt/react-howto/blob/master/README-zh.md" target="_blank" rel="external">如何学习React | Github</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" target="_blank" rel="external">React 技术栈系列教程 | Blog</a></li>
-<li><a href="http://lib.csdn.net/base/react/structure" target="_blank" rel="external">react 知识结构 | csdn</a></li>
-</ol>
-
+            <p><img src="/2016/12/14/React-知识图谱/5.jpg" alt="Getty, we're not programmed. We're people, understand?" title="Getty, we're not programmed. We're people, understand?">
+<p>#React 知识学习图谱</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>由于目前的项目还是使用传统的架构和前端技术。在从特点，应用场景和实战应用几个方面考虑，决定采用React技术栈<br></p>
+            <p class="article-more-link">
+                <a href="/2016/12/14/React-知识图谱/#more">Read More</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -1402,7 +1085,7 @@ extension=openssl.so
 
 </div>
 
-    <a data-url="http://cc2victoria.github.io/2016/12/14/React-知识图谱/" data-id="cj63th51y0000aca1ddhhcv0d" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://cc2victoria.github.io/2016/12/14/React-知识图谱/" data-id="cj6dszczo0000doa1qtau8k09" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1493,10 +1176,29 @@ extension=openssl.so
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/08/15/linux如何访问外网？/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2017/08/15/linux如何访问外网？/5.jpg)" alt="linux如何访问外网？" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/linux/">linux</a></p>
+                            <p class="item-title"><a href="/2017/08/15/linux如何访问外网？/" class="title">linux如何访问外网？</a></p>
+                            <p class="item-date"><time datetime="2017-08-15T15:05:51.000Z" itemprop="datePublished">2017-08-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/07/08/React-组件解耦之道（译）/" class="thumbnail">
     
     
-        <span style="background-image:url(http://blog.zhangruipeng.me/hexo-theme-icarus/gallery/salt-lake.jpg)" alt="React-组件解耦之道（译）" class="thumbnail-image"></span>
+        <span style="background-image:url(/2017/07/08/React-组件解耦之道（译）/5.jpg)" alt="React-组件解耦之道（译）" class="thumbnail-image"></span>
     
 </a>
 
@@ -1515,7 +1217,7 @@ extension=openssl.so
                             <a href="/2017/06/04/Redux&&Flux经常不被需要？/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/2017/06/04/Redux&amp;&amp;Flux经常不被需要？/5.jpg)" alt="Redux&amp;&amp;Flux经常不被需要？" class="thumbnail-image"></span>
     
 </a>
 
@@ -1534,7 +1236,7 @@ extension=openssl.so
                             <a href="/2017/05/24/提高webpack构建效率之DLLPlugin/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/2017/05/24/提高webpack构建效率之DLLPlugin/5.jpg)" alt="提高webpack构建效率之DLLPlugin" class="thumbnail-image"></span>
     
 </a>
 
@@ -1553,7 +1255,7 @@ extension=openssl.so
                             <a href="/2017/04/26/php-安装和开启外部扩展库/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/2017/04/26/php-安装和开启外部扩展库/5.jpg)" alt="php 安装和开启外部扩展库" class="thumbnail-image"></span>
     
 </a>
 
@@ -1566,25 +1268,6 @@ extension=openssl.so
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/03/24/linux-常用命令/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/linux/">linux</a></p>
-                            <p class="item-title"><a href="/2017/03/24/linux-常用命令/" class="title">linux 常用命令</a></p>
-                            <p class="item-date"><time datetime="2017-03-24T13:57:01.000Z" itemprop="datePublished">2017-03-24</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1594,7 +1277,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/react/components/">components</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/react/components/">components</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1603,7 +1286,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1612,7 +1295,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DLLPlugin/">DLLPlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DllReferencePlugin/">DllReferencePlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/components/">components</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flux/">flux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/">redux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DLLPlugin/">DLLPlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DllReferencePlugin/">DllReferencePlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/components/">components</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flux/">flux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/">redux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1621,7 +1304,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/DLLPlugin/" style="font-size: 10px;">DLLPlugin</a> <a href="/tags/DllReferencePlugin/" style="font-size: 10px;">DllReferencePlugin</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/flux/" style="font-size: 10px;">flux</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+            <a href="/tags/DLLPlugin/" style="font-size: 10px;">DLLPlugin</a> <a href="/tags/DllReferencePlugin/" style="font-size: 10px;">DllReferencePlugin</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/flux/" style="font-size: 10px;">flux</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
         </div>
     </div>
 

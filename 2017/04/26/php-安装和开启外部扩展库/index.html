@@ -5,16 +5,18 @@
     
     <title>php 安装和开启外部扩展库 | Cecelia&#39;s BLOG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="php 安装和开启外部扩展库不得不说，由于php的扩展问题，我在安装和运行php相关项目的时候遇到了很多的坑。例如之前搭建php的Laravel框架，以及最近搭建的 phpmyadmin项目，都遇到了不少缺少库的问题：由于缺少像openssl、mysqli、postgres等外部扩展库，导致程序不能正常运行。但是我们项目通常用到的php是已经编译好的，而且服务器上的安装包的外部扩展不是很全。所以不">
+    <meta name="description" content="php 安装和开启外部扩展库不得不说，由于php的扩展问题，我在安装和运行php相关项目的时候遇到了很多的坑。例如之前搭建php的Laravel框架，以及最近搭建的 phpmyadmin项目，都遇到了不少缺少库的问题：由于缺少像openssl、mysqli、postgres等外部扩展库，导致程序不能正常运行。但是我们项目通常用到的php是已经编译好的，而且服务器上的安装包的外部扩展不是很全。所以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php 安装和开启外部扩展库">
 <meta property="og:url" content="http://cc2victoria.github.io/2017/04/26/php-安装和开启外部扩展库/index.html">
 <meta property="og:site_name" content="Cecelia's BLOG">
-<meta property="og:description" content="php 安装和开启外部扩展库不得不说，由于php的扩展问题，我在安装和运行php相关项目的时候遇到了很多的坑。例如之前搭建php的Laravel框架，以及最近搭建的 phpmyadmin项目，都遇到了不少缺少库的问题：由于缺少像openssl、mysqli、postgres等外部扩展库，导致程序不能正常运行。但是我们项目通常用到的php是已经编译好的，而且服务器上的安装包的外部扩展不是很全。所以不">
-<meta property="og:updated_time" content="2017-07-09T07:01:50.681Z">
+<meta property="og:description" content="php 安装和开启外部扩展库不得不说，由于php的扩展问题，我在安装和运行php相关项目的时候遇到了很多的坑。例如之前搭建php的Laravel框架，以及最近搭建的 phpmyadmin项目，都遇到了不少缺少库的问题：由于缺少像openssl、mysqli、postgres等外部扩展库，导致程序不能正常运行。但是我们项目通常用到的php是已经编译好的，而且服务器上的安装包的外部扩展不是很全。所以">
+<meta property="og:image" content="http://cc2victoria.github.io/2017/04/26/php-安装和开启外部扩展库/5.jpg">
+<meta property="og:updated_time" content="2017-08-15T16:23:55.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php 安装和开启外部扩展库">
-<meta name="twitter:description" content="php 安装和开启外部扩展库不得不说，由于php的扩展问题，我在安装和运行php相关项目的时候遇到了很多的坑。例如之前搭建php的Laravel框架，以及最近搭建的 phpmyadmin项目，都遇到了不少缺少库的问题：由于缺少像openssl、mysqli、postgres等外部扩展库，导致程序不能正常运行。但是我们项目通常用到的php是已经编译好的，而且服务器上的安装包的外部扩展不是很全。所以不">
+<meta name="twitter:description" content="php 安装和开启外部扩展库不得不说，由于php的扩展问题，我在安装和运行php相关项目的时候遇到了很多的坑。例如之前搭建php的Laravel框架，以及最近搭建的 phpmyadmin项目，都遇到了不少缺少库的问题：由于缺少像openssl、mysqli、postgres等外部扩展库，导致程序不能正常运行。但是我们项目通常用到的php是已经编译好的，而且服务器上的安装包的外部扩展不是很全。所以">
+<meta name="twitter:image" content="http://cc2victoria.github.io/2017/04/26/php-安装和开启外部扩展库/5.jpg">
     
 
     
@@ -254,9 +256,9 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h1 id="php-安装和开启外部扩展库"><a href="#php-安装和开启外部扩展库" class="headerlink" title="php 安装和开启外部扩展库"></a>php 安装和开启外部扩展库</h1><p>不得不说，由于php的扩展问题，我在安装和运行php相关项目的时候遇到了很多的坑。例如之前搭建php的<code>Laravel</code>框架，以及最近搭建的 <a href="https://www.phpmyadmin.net/" target="_blank" rel="external">phpmyadmin</a>项目，都遇到了不少缺少库的问题：由于缺少像<code>openssl</code>、<code>mysqli</code>、<code>postgres</code>等外部扩展库，导致程序不能正常运行。但是我们项目通常用到的php是已经编译好的，而且服务器上的安装包的外部扩展不是很全。所以不能通过重新编译php的办法来解决这个问题，且重新编译的话可能导致其他很多的问题。</p>
-<p>是不是很绝望？</p>
-<p>经过一番折腾，终于找到解决方法，整理如下：</p>
+            <img src="/2017/04/26/php-安装和开启外部扩展库/5.jpg" alt="To the world you may be one person, but to one person you may be the world!" title="To the world you may be one person, but to one person you may be the world!">
+<h1 id="php-安装和开启外部扩展库"><a href="#php-安装和开启外部扩展库" class="headerlink" title="php 安装和开启外部扩展库"></a>php 安装和开启外部扩展库</h1><p>不得不说，由于php的扩展问题，我在安装和运行php相关项目的时候遇到了很多的坑。例如之前搭建php的<code>Laravel</code>框架，以及最近搭建的 <a href="https://www.phpmyadmin.net/" target="_blank" rel="external">phpmyadmin</a>项目，都遇到了不少缺少库的问题：由于缺少像<code>openssl</code>、<code>mysqli</code>、<code>postgres</code>等外部扩展库，导致程序不能正常运行。但是我们项目通常用到的php是已经编译好的，而且服务器上的安装包的外部扩展不是很全。所以不能通过重新编译php的办法来解决这个问题，且重新编译的话可能导致其他很多的问题。</p>
+<p>是不是很绝望？<br><a id="more"></a><br>经过一番折腾，终于找到解决方法，整理如下：</p>
 <h2 id="检测扩展"><a href="#检测扩展" class="headerlink" title="检测扩展"></a>检测扩展</h2><p>首先检查下扩展有没有加载，如果已经加载了，那基本是99%的可能性确定问题不是出现在扩展库这个地方了。</p>
 <h3 id="phpinfo"><a href="#phpinfo" class="headerlink" title="phpinfo()"></a>phpinfo()</h3><p>利用<code>phpinfo()</code>这个方法可以查看当前安装的php包含的扩展有哪些。</p>
 <h3 id="bugfixed"><a href="#bugfixed" class="headerlink" title="bugfixed"></a>bugfixed</h3><p>在安装的时候我遇到了一个很难发现的bug: 在linux端通过<code>php -m</code>命令，我看到了一些我已经安装的扩展，但是在浏览器端通过<code>phpinfo()</code>方法，却发现缺少很多已经安装的库。后来找到原因，<code>Apache</code>中配置的<code>php.ini</code>的位置不对。如果出现类似的问题，不妨检查下<code>Apache</code>根目录下<code>conf</code>文件夹中的<code>http.conf</code>的配置是否正确</p>
@@ -311,7 +313,7 @@ extension=openssl.so
 
 </div>
 
-    <a data-url="http://cc2victoria.github.io/2017/04/26/php-安装和开启外部扩展库/" data-id="cj63th530000caca1qpuccfjm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://cc2victoria.github.io/2017/04/26/php-安装和开启外部扩展库/" data-id="cj6dszd0o000cdoa18ylt69hy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -433,10 +435,29 @@ extension=openssl.so
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/08/15/linux如何访问外网？/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2017/08/15/linux如何访问外网？/5.jpg)" alt="linux如何访问外网？" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/linux/">linux</a></p>
+                            <p class="item-title"><a href="/2017/08/15/linux如何访问外网？/" class="title">linux如何访问外网？</a></p>
+                            <p class="item-date"><time datetime="2017-08-15T15:05:51.000Z" itemprop="datePublished">2017-08-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/07/08/React-组件解耦之道（译）/" class="thumbnail">
     
     
-        <span style="background-image:url(http://blog.zhangruipeng.me/hexo-theme-icarus/gallery/salt-lake.jpg)" alt="React-组件解耦之道（译）" class="thumbnail-image"></span>
+        <span style="background-image:url(/2017/07/08/React-组件解耦之道（译）/5.jpg)" alt="React-组件解耦之道（译）" class="thumbnail-image"></span>
     
 </a>
 
@@ -455,7 +476,7 @@ extension=openssl.so
                             <a href="/2017/06/04/Redux&&Flux经常不被需要？/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/2017/06/04/Redux&amp;&amp;Flux经常不被需要？/5.jpg)" alt="Redux&amp;&amp;Flux经常不被需要？" class="thumbnail-image"></span>
     
 </a>
 
@@ -474,7 +495,7 @@ extension=openssl.so
                             <a href="/2017/05/24/提高webpack构建效率之DLLPlugin/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/2017/05/24/提高webpack构建效率之DLLPlugin/5.jpg)" alt="提高webpack构建效率之DLLPlugin" class="thumbnail-image"></span>
     
 </a>
 
@@ -493,7 +514,7 @@ extension=openssl.so
                             <a href="/2017/04/26/php-安装和开启外部扩展库/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/2017/04/26/php-安装和开启外部扩展库/5.jpg)" alt="php 安装和开启外部扩展库" class="thumbnail-image"></span>
     
 </a>
 
@@ -506,25 +527,6 @@ extension=openssl.so
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/03/24/linux-常用命令/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/linux/">linux</a></p>
-                            <p class="item-title"><a href="/2017/03/24/linux-常用命令/" class="title">linux 常用命令</a></p>
-                            <p class="item-date"><time datetime="2017-03-24T13:57:01.000Z" itemprop="datePublished">2017-03-24</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -534,7 +536,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/react/components/">components</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/react/components/">components</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -543,7 +545,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -552,7 +554,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DLLPlugin/">DLLPlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DllReferencePlugin/">DllReferencePlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/components/">components</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flux/">flux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/">redux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DLLPlugin/">DLLPlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DllReferencePlugin/">DllReferencePlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/components/">components</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flux/">flux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/">redux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -561,7 +563,7 @@ extension=openssl.so
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/DLLPlugin/" style="font-size: 10px;">DLLPlugin</a> <a href="/tags/DllReferencePlugin/" style="font-size: 10px;">DllReferencePlugin</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/flux/" style="font-size: 10px;">flux</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+            <a href="/tags/DLLPlugin/" style="font-size: 10px;">DLLPlugin</a> <a href="/tags/DllReferencePlugin/" style="font-size: 10px;">DllReferencePlugin</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/flux/" style="font-size: 10px;">flux</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
         </div>
     </div>
 
