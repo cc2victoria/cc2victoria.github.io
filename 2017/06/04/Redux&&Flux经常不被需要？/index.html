@@ -5,29 +5,17 @@
     
     <title>Redux&amp;&amp;Flux经常不被需要？ | Cecelia&#39;s BLOG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Redux/Flux 经常不被需要？
-原文地址：Redux/Flux is often (usually?) not needed
-时间: 2017/6/4
-
-前言我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用React的团队一起工作，所以我相当了解他们遇到的问题。而且，人们使用React遇到的前10的问题，没有一个是使用Redux和Flux解">
+    <meta name="description" content="前言我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用React的团队一起工作，所以我相当了解他们遇到的问题。而且，人们使用React遇到的前10的问题，没有一个是使用Redux和Flux解决的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redux&&Flux经常不被需要？">
 <meta property="og:url" content="http://cc2victoria.github.io/2017/06/04/Redux&&Flux经常不被需要？/index.html">
 <meta property="og:site_name" content="Cecelia's BLOG">
-<meta property="og:description" content="Redux/Flux 经常不被需要？
-原文地址：Redux/Flux is often (usually?) not needed
-时间: 2017/6/4
-
-前言我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用React的团队一起工作，所以我相当了解他们遇到的问题。而且，人们使用React遇到的前10的问题，没有一个是使用Redux和Flux解">
+<meta property="og:description" content="前言我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用React的团队一起工作，所以我相当了解他们遇到的问题。而且，人们使用React遇到的前10的问题，没有一个是使用Redux和Flux解决的。">
 <meta property="og:image" content="http://cc2victoria.github.io/2017/06/04/Redux&&Flux经常不被需要？/5.jpg">
-<meta property="og:updated_time" content="2017-08-15T16:26:46.745Z">
+<meta property="og:updated_time" content="2017-08-15T16:46:49.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redux&&Flux经常不被需要？">
-<meta name="twitter:description" content="Redux/Flux 经常不被需要？
-原文地址：Redux/Flux is often (usually?) not needed
-时间: 2017/6/4
-
-前言我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用React的团队一起工作，所以我相当了解他们遇到的问题。而且，人们使用React遇到的前10的问题，没有一个是使用Redux和Flux解">
+<meta name="twitter:description" content="前言我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用React的团队一起工作，所以我相当了解他们遇到的问题。而且，人们使用React遇到的前10的问题，没有一个是使用Redux和Flux解决的。">
 <meta name="twitter:image" content="http://cc2victoria.github.io/2017/06/04/Redux&&Flux经常不被需要？/5.jpg">
     
 
@@ -269,10 +257,6 @@
         
             
             <img src="/2017/06/04/Redux&&Flux经常不被需要？/5.jpg" alt="Winter is comming!" title="Winter is comming!">
-<h1 id="Redux-Flux-经常不被需要？"><a href="#Redux-Flux-经常不被需要？" class="headerlink" title="Redux/Flux 经常不被需要？"></a>Redux/Flux 经常不被需要？</h1><blockquote>
-<p>原文地址：<a href="https://medium.com/@daveford/redux-flux-is-often-usually-not-needed-13c734b416cd" target="_blank" rel="external">Redux/Flux is often (usually?) not needed</a></p>
-<p>时间: 2017/6/4</p>
-</blockquote>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我发现很多React开发新手都假定Redux是React平台的一部分。实际上它不是。和许多开始使用React的团队一起工作，所以我相当了解他们遇到的问题。而且，人们使用React遇到的前10的问题，没有一个是使用Redux和Flux解决的。<br><a id="more"></a><br><em>附注：Flux是一种模式，而Redux是实现这种模式的框架。实际上，在这篇文章中我是在谈论两者。</em></p>
 <p>我不是唯一一个提出此观点的人。下面是引用Pete Hunt(React 创建者之一)的一段话：</p>
 <blockquote>
@@ -300,6 +284,7 @@
 <h2 id="那么什么时候应该使用Redux"><a href="#那么什么时候应该使用Redux" class="headerlink" title="那么什么时候应该使用Redux?"></a>那么什么时候应该使用Redux?</h2><p>如果我有更多时间，我愿意探讨究竟Redux解决了什么问题和什么场景使用它的细节。但是我愿意把它留在下篇博文中。<br>但是通常，当客户开始列举他们需要Redux的原因时，我经常可以告诉他们怎样使用传统的纯React并且使用更少的操作。</p>
 <h2 id="我的建议"><a href="#我的建议" class="headerlink" title="我的建议"></a>我的建议</h2><p>等待直到你的应用组件复杂,并且你遇到一些特定的问题，而且该问题你确定可以用Redux解决，再使用Redux。</p>
 <h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>总之，我会说Redux不应该被作为大多数应用的默认选择，特别是，我的学生和客户创建的大多数应用。我认为在投身于Redux之前，至少有100件事情他们应该学习。</p>
+<p>原文地址：<a href="https://medium.com/@daveford/redux-flux-is-often-usually-not-needed-13c734b416cd" target="_blank" rel="external">Redux/Flux is often (usually?) not needed</a></p>
 
         
         </div>
@@ -310,7 +295,7 @@
 
 </div>
 
-    <a data-url="http://cc2victoria.github.io/2017/06/04/Redux&&Flux经常不被需要？/" data-id="cj6dtc84m000428a1g19wz38n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://cc2victoria.github.io/2017/06/04/Redux&&Flux经常不被需要？/" data-id="cj6dtmdwy0006noa12sve3ubj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
