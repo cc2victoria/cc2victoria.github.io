@@ -3,20 +3,35 @@
 <head>
     <meta charset="utf-8">
     
-    <title>提高webpack构建效率之DLLPlugin | Cecelia&#39;s BLOG</title>
+    <title>webpack+react项目搭建入门 | Cecelia&#39;s BLOG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="1.前言webpack是一个将前端资源模块化打包的工具。借助该工具，我们在项目开发的过程中，可以更便宜的处理模块间的依赖关系。而commonjs的模块和ES6的处理代码必须在浏览器使用前，经过webpack的构建。">
+    <meta name="description" content="webpack+react 项目搭建入门1.Code Tree代码文件树如下：
+build
+|-- webpack.config.js               # 公共配置
+|-- webpack.dev.js                  # 开发配置
+|-- webpack.release.js              # 发布配置
+docs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="提高webpack构建效率之DLLPlugin">
-<meta property="og:url" content="http://cc2victoria.github.io/2017/05/24/提高webpack构建效率之DLLPlugin/index.html">
+<meta property="og:title" content="webpack+react项目搭建入门">
+<meta property="og:url" content="http://cc2victoria.github.io/2017/03/23/webpack-react项目搭建入门/index.html">
 <meta property="og:site_name" content="Cecelia's BLOG">
-<meta property="og:description" content="1.前言webpack是一个将前端资源模块化打包的工具。借助该工具，我们在项目开发的过程中，可以更便宜的处理模块间的依赖关系。而commonjs的模块和ES6的处理代码必须在浏览器使用前，经过webpack的构建。">
-<meta property="og:image" content="http://cc2victoria.github.io/2017/05/24/提高webpack构建效率之DLLPlugin/5.jpg">
-<meta property="og:updated_time" content="2018-03-23T17:07:08.325Z">
+<meta property="og:description" content="webpack+react 项目搭建入门1.Code Tree代码文件树如下：
+build
+|-- webpack.config.js               # 公共配置
+|-- webpack.dev.js                  # 开发配置
+|-- webpack.release.js              # 发布配置
+docs">
+<meta property="og:image" content="http://cc2victoria.github.io/2017/03/23/webpack+react项目搭建入门/6.jpg">
+<meta property="og:updated_time" content="2018-03-23T17:49:09.789Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="提高webpack构建效率之DLLPlugin">
-<meta name="twitter:description" content="1.前言webpack是一个将前端资源模块化打包的工具。借助该工具，我们在项目开发的过程中，可以更便宜的处理模块间的依赖关系。而commonjs的模块和ES6的处理代码必须在浏览器使用前，经过webpack的构建。">
-<meta name="twitter:image" content="http://cc2victoria.github.io/2017/05/24/提高webpack构建效率之DLLPlugin/5.jpg">
+<meta name="twitter:title" content="webpack+react项目搭建入门">
+<meta name="twitter:description" content="webpack+react 项目搭建入门1.Code Tree代码文件树如下：
+build
+|-- webpack.config.js               # 公共配置
+|-- webpack.dev.js                  # 开发配置
+|-- webpack.release.js              # 发布配置
+docs">
+<meta name="twitter:image" content="http://cc2victoria.github.io/2017/03/23/webpack+react项目搭建入门/6.jpg">
     
 
     
@@ -213,7 +228,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-提高webpack构建效率之DLLPlugin" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-webpack-react项目搭建入门" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -221,7 +236,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            提高webpack构建效率之DLLPlugin
+            webpack+react项目搭建入门
         </h1>
     
 
@@ -230,8 +245,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/05/24/提高webpack构建效率之DLLPlugin/">
-            <time datetime="2017-05-24T15:23:09.000Z" itemprop="datePublished">2017-05-24</time>
+        <a href="/2017/03/23/webpack-react项目搭建入门/">
+            <time datetime="2017-03-23T15:37:26.000Z" itemprop="datePublished">2017-03-23</time>
         </a>
     </div>
 
@@ -245,7 +260,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/DLLPlugin/">DLLPlugin</a>, <a class="tag-link" href="/tags/DllReferencePlugin/">DllReferencePlugin</a>, <a class="tag-link" href="/tags/webpack/">webpack</a>
+        <a class="tag-link" href="/tags/react/">react</a>, <a class="tag-link" href="/tags/webpack/">webpack</a>
     </div>
 
                     </div>
@@ -256,153 +271,283 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <img src="/2017/05/24/提高webpack构建效率之DLLPlugin/5.jpg" alt="Is life always this hard, or is it just when you're a kid?" title="Is life always this hard, or is it just when you're a kid?">
-<h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p><code>webpack</code>是一个将前端资源模块化打包的工具。借助该工具，我们在项目开发的过程中，可以更便宜的处理模块间的依赖关系。而<code>commonjs</code>的模块和ES6的处理代码必须在浏览器使用前，经过webpack的构建。<br><a id="more"></a><br>模块会随着项目的进展而逐渐增多，随之webpack打包的时间也会加长。最近开发的项目，经过基本的优化，打包的时间已经超过<code>120s</code>, 而改动代码后，至少也要<code>10s</code>页面才能重新刷新。如此，开阿发效率大大降低。</p>
-<h3 id="2-CommonsChunkPlugin"><a href="#2-CommonsChunkPlugin" class="headerlink" title="2. CommonsChunkPlugin"></a>2. CommonsChunkPlugin</h3><p>分析了下(这儿可以贴张图)，主要占打包资源的是依赖的<code>React</code>，<code>axios</code>、<code>semantic-react-ui</code>等等引入的包依赖，在执行<code>node webpack.config.js</code>的时候，所有的依赖都会重新打包一遍。之前我采用的是<code>CommonsChunkPlugin</code>来对相同的模块，单独提取出来打包，进而减小rebuild的性能。</p>
-<pre><code>var config = {
-  // 入口文件
-  entry: {
-    app: [&apos;./index.js&apos;],
-    lib: [
-       &apos;react&apos;, &apos;react-dom&apos;, &apos;react-router&apos;,
-       &apos;redux&apos;, &apos;react-redux&apos;, &apos;redux-thunk&apos;
-     ],
+            <img src="/2017/03/23/webpack-react项目搭建入门/6.jpg" alt="世界上最大的谎言是你不行!" title="世界上最大的谎言是你不行!">
+<h1 id="webpack-react-项目搭建入门"><a href="#webpack-react-项目搭建入门" class="headerlink" title="webpack+react 项目搭建入门"></a>webpack+react 项目搭建入门</h1><h2 id="1-Code-Tree"><a href="#1-Code-Tree" class="headerlink" title="1.Code Tree"></a>1.Code Tree</h2><p>代码文件树如下：</p>
+<pre><code>build
+|-- webpack.config.js               # 公共配置
+|-- webpack.dev.js                  # 开发配置
+|-- webpack.release.js              # 发布配置
+docs                                # 项目文档
+dist                                # 发布配置的源码
+</code></pre><a id="more"></a>
+<pre><code>node_modules                       
+src                                 # 项目源码
+|-- conf                            # 配置文件
+|-- pages                           # 页面目录
+|   |-- page1                       
+|   |   |-- index.js                # 页面逻辑
+|   |   |-- index.scss              # 页面样式
+|   |   |-- img                     # 页面图片
+|   |   |   |-- xx.png          
+|   |   |-- __tests__               # 测试文件
+|   |   |   |-- xx.js
+|   |-- index.html                  # 入口页
+|   |-- index.js                    # 入口JS
+|   |-- routes.js                   # 路由配置
+|-- components                      # 公共组件目录
+|   |-- loading
+|   |   |-- index.js
+|   |   |-- index.scss
+|   |   |-- __tests__               
+|   |   |   |-- xx.js
+|-- js
+|   |-- actions
+|   |   |-- index.js
+|   |   |-- __tests__               
+|   |   |   |-- xx.js
+|   |-- reducers 
+|   |   |-- index.js
+|   |   |-- __tests__               
+|   |   |   |-- xx.js
+|   |-- xx.js                 
+|-- css                             # 公共CSS目录
+|   |-- common.scss
+|-- img                             # 公共图片目录
+|   |-- xx.png
+tests                               # 其他测试文件
+package.json                                           
+READNE.md  
+.babelrc                            # babel 配置文件    
+</code></pre><h2 id="2-示例环境"><a href="#2-示例环境" class="headerlink" title="2.示例环境"></a>2.示例环境</h2><ul>
+<li>CentOS Linux 7 | Windows 7 | Windows 8 | Windows 10</li>
+<li>node v6.2.0</li>
+<li>npm 3.8.9</li>
+</ul>
+<h2 id="3-Getting-started"><a href="#3-Getting-started" class="headerlink" title="3.Getting started"></a>3.Getting started</h2><ol>
+<li><p><code>git clone https://github.com/cc2victoria/react-webpack-es6-redux-example.git</code> </p>
+</li>
+<li><p><code>cd react-webpack-es6-redux-example</code> </p>
+</li>
+<li><p>执行 <code>npm install</code></p>
+</li>
+<li><p>执行 <code>npm start</code></p>
+</li>
+<li><p>在浏览器中打开页面 <a href="">http://IP:8080</a></p>
+</li>
+</ol>
+<h2 id="4-webpack-配置解析"><a href="#4-webpack-配置解析" class="headerlink" title="4.webpack 配置解析"></a>4.webpack 配置解析</h2><h3 id="4-1-安装"><a href="#4-1-安装" class="headerlink" title="4.1 安装"></a>4.1 安装</h3><p>全局安装<br>     $ npm install -g webpack<br>     $ webpack -v =&gt; webpack 1.14.0</p>
+<p>项目依赖<br>    $ npm install webpack –save-dev</p>
+<h3 id="4-2-核心配置"><a href="#4-2-核心配置" class="headerlink" title="4.2 核心配置"></a>4.2 核心配置</h3><p> <code>webpack</code> 的核心配置主要包括 <strong>entry</strong>，<strong>output</strong>，<strong>resolve</strong>，<strong>module</strong>，<strong>plugins</strong> 这五个部分</p>
+<pre><code>&lt;!-- webpack.config.js --&gt;
+var webpack = require(&apos;webpack&apos;);
+var path = require(&apos;path&apos;);
+var config = {
+  entry: [
+    path.resolve(__dirname, &apos;app/index.js&apos;)       // 入口文件
+  ],
+  output: {                                       // 出口目录
+    path: path.resolve(__dirname, &apos;build&apos;),
+    filename: &apos;bundle.js&apos;,
+    publicPath: &apos;/&apos;
   },
-  output: {
-    path: &apos;./&apos;,
-    filename: &apos;[name].js&apos;,
+  resolve: {                                      // resolve
+    modulesDirectories: [&quot;web_modules&quot;, &quot;node_modules&quot;, &quot;bower_components&quot;]
   },
-  plugins: [
-    // 提取共同模块
-    new webpack.optimize.CommonsChunkPlugin({
-       names: [&apos;lib&apos;, &apos;app&apos;]
-    }),
+  module: {
+    loaders: [                                    // loaders
+        {test: /\.js$/, loader: &quot;babel&quot;,exclude: /(node_modules|bower_components)/},
+        {test: /\.css$/, loader: &quot;style!css&quot;},
+        {test: /\.(jpg|png)$/, loader: &quot;url?limit=8192&quot;},
+        {test: /\.scss$/, loader: &quot;style!css!sass&quot;}
+    ]
+  }
+  plugins: [                                      // plugins
+    new HotModuleReplacementPlugin(),
+    new HtmlwebpackPlugin(),
+    new UglifyJsPlugin()
   ]
 }
-</code></pre><p>然而<code>CommonsChunkPlugin</code>只在<code>rebuild</code>的时候有一点效果，初次运行的时间仍然没有变。</p>
-<p>网上搜索加上实际操作，终于让我找到了解决方法。</p>
-<h3 id="3-DLL-amp-DllReference"><a href="#3-DLL-amp-DllReference" class="headerlink" title="3. DLL &amp; DllReference"></a>3. DLL &amp; DllReference</h3><h4 id="DLL"><a href="#DLL" class="headerlink" title="DLL"></a>DLL</h4><blockquote>
-<p>DLL 插件不执行任何模块的代码，只是引入模块。最终导出一个可以用于通过id（内部引入函数）来引入模块的函数和一个被写入特殊位置的<code>manifest.json</code>文件，该文件包含实际请求到模块id的映射。</p>
-</blockquote>
-<p><em>详细参考 <a href="https://github.com/webpack/docs/wiki/list-of-plugins#dllplugin" target="_blank" rel="external">dllplugin</a></em></p>
-<p>该插件结合<code>output.library</code>选项，使dll方法可以在全局范围内使用。</p>
-<p><strong>webpack.dll.js</strong></p>
-<pre><code>new DllPlugin({
-  path: path.join(__dirname, &quot;manifest.json&quot;),
-  name: &quot;[name]_[hash]&quot;,
-  context: __dirname
-})
-</code></pre><ul>
-<li><code>path</code> : manifest文件生成的位置，绝对路径</li>
-<li><code>name</code> : dll 方法的名称（与 output.library 保持一致）</li>
-<li><code>context (可选)</code> : manifest文件中请求（对模块的引入请求）的上下文环境，默认与webpack环境保持一致</li>
-</ul>
-<h4 id="DllReference"><a href="#DllReference" class="headerlink" title="DllReference"></a>DllReference</h4><blockquote>
-<p>用于引用可用的dll函数，可通过<code>manifest</code> 文件将模块名称映射到模块的 <code>id</code>。<br>该插件可用于配置 <code>DllPlugin</code>创建的 <code>dll</code>包和 <code>Manifest</code> 文件。并且可以通过以下两种方式访问：</p>
-<h5 id="作用域模式"><a href="#作用域模式" class="headerlink" title="作用域模式"></a>作用域模式</h5><p>dll 的内容可以通过一个模块的前缀访问。例如：假设 <code>scope=&quot;xyz&quot;</code>, 在 dll 中的 <code>abc</code> 文件就可以通过 <code>require(&quot;xyz/abc&quot;)</code> 来访问。</p>
-<h5 id="映射模式"><a href="#映射模式" class="headerlink" title="映射模式"></a>映射模式</h5><p>dll 的内容被映射到当前路径。如果通过 <code>require</code> 引入的文件名和dll中文件名（解析后）相匹配，那么将使用dll中的文件来。注意：由于这个过程是发生在解析后，所以dll用户必须可以访问到同一路径下的所有dll文件。例如：如果dll文件包含 <code>jquery</code> 和文件 <code>abc</code>, <code>require(&quot;jquery&quot;)</code> 和 <code>requier(&quot;./abc&quot;)</code> 将从dll文件中去获取。</p>
-</blockquote>
-<p><em>详细参考 <a href="https://github.com/webpack/docs/wiki/list-of-plugins#dllreferenceplugin" target="_blank" rel="external">dllreferenceplugin</a></em></p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code>new DllReferencePlugin({
-  context: __dirname,
-  scope: &quot;xyz&quot;,
-  manifest: require(&quot;./manifest.json&quot;),
-  name: &quot;./my-dll.js&quot;,
-  sourceType: &quot;commonsjs2&quot;,
-  content: { ... }
-})
-</code></pre><ul>
-<li><code>context</code>: (absolute path) context of requests in the manifest (or content property)</li>
-<li><code>scope</code> (optional): prefix which is used for accessing the content of the dll<br>manifest (object): an object containing content and name</li>
-<li><code>name</code> (optional): the name where the dll is exposed (defaults to manifest.name) (see also externals)</li>
-<li><code>sourceType</code> (optional): the type how the dll is exposed (defaults to “var”) (see also externals)</li>
-<li><code>content</code> (optional): the mappings from request to module id (defaults to manifest.content)</li>
-</ul>
-<h3 id="4-实际操作"><a href="#4-实际操作" class="headerlink" title="4. 实际操作"></a>4. 实际操作</h3><ol>
-<li><p>在根目录单独建立一个 <code>webpack.dll.js</code></p>
-<pre><code>var webpack = require(&apos;webpack&apos;)
 
-module.exports = {
-    output: {
-        path: &apos;./dll&apos;,
-        filename: &apos;[name].js&apos;,
-        /**
-         * output.library
-         * 将会定义为 window.${output.library}
-         * 在这次的例子中，将会定义为`window.vendor_library`
-         */
-        library: &apos;[name]_library&apos;,
-        libraryTarget: &apos;commonjs2&apos;
-    },
-    entry: {
-        // 入口，依赖的外部模块
-        vendor: [
-          &apos;react&apos;, &apos;react-dom&apos;, &apos;react-router&apos;, &apos;redux&apos;, &apos;react-redux&apos;, 
-          &apos;redux-thunk&apos;, &apos;semantic-ui-react&apos;, &apos;lodash&apos;, &apos;echarts&apos;, &apos;axios&apos;
-        ]
-    },
-    plugins: [
-        new webpack.DllPlugin({
-           /**
-            * path
-            * 定义 manifest 文件生成的位置
-            * [name]的部分由entry的名字替换
-            */
-            path: &apos;./dll/[name]-manifest.json&apos;,
-           /**
-            * name
-            * dll bundle 输出到那个全局变量上
-            * 和 output.library 一样即可。 
-            */
-            name: &apos;[name]&apos;,
-            context: __dirname
-        })
-    ]
-}
-</code></pre></li>
-</ol>
-<ol>
-<li><p>生成dll文件 </p>
-<p> 执行<code>./node_modules/.bin/webpack --config build/webpack.config.js</code>。</p>
-<p> 请在每次依赖的模块更改时重新执行这个命令</p>
+module.exports = config;
+</code></pre><ul>
+<li><strong>entry</strong>: 入口,定义要打包的文件</li>
+<li><strong>output</strong>: 出口，定义打包输出的文件；包括路径，文件名，还可能有运行时的访问路径（publicPath）参数</li>
+<li><strong>module</strong>: webpack将所有的资源都看做是模块，而模块就需要加载器；主要定义一些loaders,定义哪些后缀名的文件应该用哪些loader<ul>
+<li><strong>test</strong>: 正则表达式，检测文件名</li>
+<li><strong>exclude</strong>: 忽略的文件</li>
+</ul>
 </li>
-<li><p>在<code>index.html</code>中引入dll文件</p>
-<p> <em>这一步必不可少，之前因为少了这一步，一直报 vendor_library not defined</em></p>
-<pre><code>//这个模块的引入必须在自定义文件的入口之前
-&lt;script src=&quot;dist/dll/vendor.dll.js&quot;&gt;&lt;/script&gt;
-</code></pre></li>
-<li><p><code>webpack.config.js</code></p>
-<pre><code>var webpack = require(&apos;webpack&apos;)
+<li><strong>resolve</strong>: 定义能够被打包的文件，文件后缀名</li>
+<li><strong>plugins</strong>: 定义一些额外的插件</li>
+</ul>
+<h4 id="4-2-1-配置-React-ES6-amp-Babel-6"><a href="#4-2-1-配置-React-ES6-amp-Babel-6" class="headerlink" title="4.2.1 配置 React, ES6 &amp; Babel 6"></a>4.2.1 配置 React, ES6 &amp; Babel 6</h4><p>babel 安装： <code>$ npm install babel babel-core babel-loader babel-preset-es2015 babel-preset-react --save-dev</code><br>react 安装：<code>$ npm install react react-dom react-redux react-router redux react-thunk --save</code></p>
+<p>目的：编译和解析 JS： JSX 、ES6</p>
+<p>最新的babel 6.x 版本中，在指定哪些代码转换器将被启用时，需要配置 presets 。最简单配置的方法就是项目根目录下建一个 .babelrc 文件：</p>
+<pre><code>// .babelrc
+{
+  &quot;presets&quot;: [&quot;es2015&quot;, &quot;react&quot;]
+}
+</code></pre><p>webpack.config.js中的配置：</p>
+<pre><code>config.module.loaders.push({
+  test: /\.js$/,
+  exclude: /node_modules/,
+  // 这里使用 loaders ，因为后面还需要添加 loader
+  loaders: [&apos;babel?cacheDirectory=&apos; + CACHE_PATH]
+});
+</code></pre><ul>
+<li>使用 <code>babel</code> 和 <code>babel-loader</code> 编译 <code>jsx</code>和<code>es6</code>代码</li>
+<li><code>babel-preset-es2015</code> 用于解析 <code>es6</code></li>
+<li><code>babel-preset-react</code> 用于解析 <code>jsx</code> </li>
+</ul>
+<h4 id="4-2-2-图片处理"><a href="#4-2-2-图片处理" class="headerlink" title="4.2.2 图片处理"></a>4.2.2 图片处理</h4><p>安装：<code>$ npm install url-loader image-webpack-loader --save-dev</code><br>目的：对图片进行打包</p>
+<pre><code>// 图片路径处理，压缩
+config.module.loaders.push({
+  test: /\.(?:jpg|gif|png|svg)$/,
+  loaders: [
+    // 对小于 8kb 的图片将会以base64的形式内联在代码中，超过这个大小就会变成独立文件
+    &apos;url?limit=8000&amp;name=/img/[hash].[ext]&apos;,
+    // 压缩图片
+    &apos;image-webpack&apos;
+   ]
+});
+</code></pre><ul>
+<li><a href="https://github.com/webpack/url-loader/" target="_blank" rel="external">url-loader</a> 对图片路径进行压缩</li>
+<li><a href="https://www.npmjs.com/package/image-webpack-loader" target="_blank" rel="external">image-webpack</a> 应用于图片压缩，依赖于以下几个模块：<ul>
+<li><a href="https://github.com/kevva/imagemin-gifsicle" target="_blank" rel="external">gifsicle</a>  - <em>Compress GIF images</em></li>
+<li><a href="https://github.com/imagemin/imagemin-mozjpeg" target="_blank" rel="external">mozjpeg</a> - <em>Compress JPEG images</em></li>
+<li><a href="https://github.com/kevva/imagemin-optipng" target="_blank" rel="external">optipng</a>    - <em>Compress PNG images</em></li>
+<li><a href="https://github.com/imagemin/imagemin-svgo" target="_blank" rel="external">svgo</a>       - <em>Compress SVG images</em></li>
+<li><a href="https://pngquant.org/" target="_blank" rel="external">pngquant</a>                       - <em>Compress PNG images</em></li>
+</ul>
+</li>
+</ul>
+<h4 id="4-2-3-样式处理"><a href="#4-2-3-样式处理" class="headerlink" title="4.2.3 样式处理"></a>4.2.3 样式处理</h4><ul>
+<li>安装：<code>$ npm install css-loader style-loader sass-loader node-sass postcss-loader precss --save-dev</code></li>
+<li>目的：<code>.css</code>和<code>.scss</code>文件进行编译    </li>
+<li>示例:</li>
+</ul>
+<pre><code>config.module.loaders.push({
+    test: /\.(scss|css)$/,
+    loaders: [&apos;style&apos;, &apos;css&apos;, &apos;postcss&apos;, &apos;sass&apos;]
+ });
+</code></pre><h4 id="4-2-4-Plugins"><a href="#4-2-4-Plugins" class="headerlink" title="4.2.4 Plugins"></a>4.2.4 Plugins</h4><ul>
+<li><p>代码热替换：HotModuleReplacementPlugin</p>
+</li>
+<li><p>生成html文件：HtmlWebpackPlugin</p>
+</li>
+<li><p>报错但不退出webpack进程：NoErrorsPlugin</p>
+</li>
+<li><p>代码压缩：UglifyJsPlugin</p>
+</li>
+<li><p>设置环境变量： DefinePlugin</p>
+</li>
+</ul>
+<h3 id="4-3-环境配置"><a href="#4-3-环境配置" class="headerlink" title="4.3 环境配置"></a>4.3 环境配置</h3><p>在项目的实际开发中，会将项目分为以下两个环境：</p>
+<ul>
+<li><p>开发环境： 需要日志输出，sourcemap ，错误报告等等</p>
+</li>
+<li><p>生产环境：需要做代码压缩，对文件名进行 hash 处理等等</p>
+</li>
+</ul>
+<p><code>webpack</code> 提供了 <code>DefinePlugin</code> 设置环境变量，后面会根据设置的不同环境变量决定是否打包压缩，还是启动dev server 或者是 prod server</p>
+<pre><code>&lt;!-- webpack.config.js --&gt;
+plugins: [
+    ...
+    new webpack.DefinePlugin({
+        &quot;process.env.NODE_ENV&quot;: JSON.stringify(process.env.NODE_ENV || &apos;development&apos;) // or production
+    }),
+]
 
-module.exports = {
-    output: {
-        path: __dirname,
-        filename: &apos;[name].bundle.js&apos;,
-    },
-    entry: {
-        app: [&apos;./app.js&apos;]
-    },
-    plugins: [
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: require(&apos;./dll/test-manifest.json&apos;),
-            sourceType: &apos;commonjs2&apos;,
-            name: &apos;./dll/test.js&apos;
-        })
-    ]
+// 判断是否是生成环境
+var __DEV__ = process.env.NODE_ENV !== &apos;production&apos;;
+</code></pre><p>使用方法： <code>NODE_ENV=development node build/webpack.dev.js --hot</code></p>
+<h4 id="4-2-1-开发环境"><a href="#4-2-1-开发环境" class="headerlink" title="4.2.1 开发环境"></a>4.2.1 开发环境</h4><p>将<code>webpack-dev-server</code>的配置单独作为一个配置文件，应用于开发环境。查看日志、错误报告，sourcemap和部署测试服务环境</p>
+<pre><code>&lt;!-- webpack.dev.js --&gt;
+
+var webpack = require(&apos;webpack&apos;);
+var webpackDevServer = require(&apos;webpack-dev-server&apos;);
+var config = require(&apos;./webpack.config.js&apos;);        
+
+config.entry.unshift(&quot;webpack-dev-server/client?http://localhost:8080/&quot;, &quot;webpack/hot/dev-server&quot;);
+
+var compiler = webpack(config);
+var server = new webpackDevServer(compiler, {     // 初始化webpack-dev-server   
+  historyApiFallback: true,
+  hot: true,
+  inline: true,
+  progress: true,
+  contentBase: &apos;./app&apos;,
+  stats: { colors: true }
+});
+
+server.listen(8080, &quot;localhost&quot;, function(err) {   // 监听IP和端口号
+  if(err) {
+    console.log(err);
+  }
+  console.log(&apos;Listening at localhost:8080...&apos;);
+});
+</code></pre><h4 id="4-2-2-生产环境"><a href="#4-2-2-生产环境" class="headerlink" title="4.2.2 生产环境"></a>4.2.2 生产环境</h4><p>生产环境主要是对代码进行压缩，对文件进行处理，打包到<code>/dist</code>文件的目录下</p>
+<pre><code>&lt;!-- webpack.release.js --&gt;
+var webpack = require(&apos;webpack&apos;);
+var config = require(&apos;./webpack.config&apos;);
+
+var args = process.argv;
+var watch = args.indexOf(&apos;--watch&apos;) &gt; -1;
+var online = args.indexOf(&apos;--deploy=online&apos;) &gt; -1;
+
+// 测试环境静态资源 domain
+var testPublicPath = &apos;/&apos;;
+// 生产环境静态资源 domain
+var onlinePublicPath = &apos;/&apos;;
+
+if (online) {
+  config.output.publicPath = onlinePublicPath; 
+} else {
+  config.output.publicPath = testPublicPath; 
 }
-</code></pre></li>
-</ol>
-<h3 id="BugFixed"><a href="#BugFixed" class="headerlink" title="BugFixed"></a>BugFixed</h3><p>配置中常可能会出现的问题：</p>
-<ol>
-<li><p><a href="https://github.com/webpack/webpack/issues/2875" target="_blank" rel="external">vendor not defined</a> : 模块没有在html中引入，在根目录文件夹中加入script标签引入dll文件。</p>
+
+var compiler = webpack(config);
+
+function callback(err, stats) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(stats.toString({
+      colors: true,
+      chunks: false,
+      children: false,
+    }));  
+  }
+}
+
+if (watch) {
+  compiler.watch({}, callback);
+} else {
+  compiler.run(callback);
+}
+</code></pre><h2 id="5-构建流程图"><a href="#5-构建流程图" class="headerlink" title="5.构建流程图"></a>5.构建流程图</h2><p><img src="http://i.imgur.com/P98LOd1.png" alt=""></p>
+<h2 id="6-其他配置"><a href="#6-其他配置" class="headerlink" title="6 其他配置"></a>6 其他配置</h2><h3 id="6-1-webpack中bower的配置"><a href="#6-1-webpack中bower的配置" class="headerlink" title="6.1 webpack中bower的配置"></a>6.1 webpack中bower的配置</h3><ul>
+<li>安装：<code>$ npm install bower -g</code></li>
+<li>配置：<a href="http://webpack.github.io/docs/usage-with-bower.html" target="_blank" rel="external">bower 在webpack 中的配置</a></li>
+<li>报错：添加 <strong>–allow-root</strong></li>
+<li>示例： <code>bower install bootstrap#v4.0.0-alpha.5 --allow-root</code></li>
+</ul>
+<p>请求 <a href="https://daveceddia.com/ajax-requests-in-react/" target="_blank" rel="external">https://daveceddia.com/ajax-requests-in-react/</a></p>
+<h2 id="7-常见错误"><a href="#7-常见错误" class="headerlink" title="7.常见错误"></a>7.常见错误</h2><h3 id="7-1-安装时错误"><a href="#7-1-安装时错误" class="headerlink" title="7.1 安装时错误"></a>7.1 安装时错误</h3><ul>
+<li>安装node-sass时会报错。解决方法：<code>SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install node-sass --save-dev</code>        </li>
+</ul>
+<h3 id="7-2-执行时错误"><a href="#7-2-执行时错误" class="headerlink" title="7.2.执行时错误"></a>7.2.执行时错误</h3><p><img src="http://i.imgur.com/f3a77R9.png" alt=""></p>
+<ul>
+<li><p>错误1：系统缺少<code>libpng.so.0</code>的库。  解决方法：<code>yum install */libpng12.so.0</code>  <code>yum install libpng12.x86_64</code></p>
 </li>
-<li><p>打包时间没有变快： 检查下<code>webpack.config.js</code>的<code>context</code>是否和<code>webpack.config.js</code>的一致，不一致的话保持一致，一般这个context的默认值是开发项目的根路径。</p>
+<li><p>错误2：是由错误1导致的，因为缺少库，所以在安装image-webpack所依赖的几个模块，如：pngquant,没有产生执行文件，解决方法：重新安装<code>npm uninstall image-webpack-loader &amp;&amp; npm install image-webpack-loader</code></p>
 </li>
-</ol>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
-<li><a href="https://medium.com/@soederpop/webpack-plugins-been-we-been-keepin-on-the-dll-cdfdd6cb8cd7" target="_blank" rel="external">Webpack Plugins we been keepin on the DLL</a></li>
+</ul>
+<h2 id="8-参考文档"><a href="#8-参考文档" class="headerlink" title="8.参考文档"></a>8.参考文档</h2><ol>
+<li><a href="https://github.com/chenbin92/react-redux-webpack-starter/issues/1" target="_blank" rel="external">基于 webpack 搭建前端工程基础篇 </a>  </li>
+<li><a href="https://github.com/petehunt/react-howto/blob/master/README-zh.md#user-content-%E5%AD%A6%E4%B9%A0-react-%E6%9C%AC%E8%BA%AB" target="_blank" rel="external">如何学习React</a>    </li>
+<li><a href="http://webpack.github.io/docs/" target="_blank" rel="external">webpack 官方文档</a>    </li>
+<li><a href="https://hulufei.gitbooks.io/react-tutorial/content/introduction.html" target="_blank" rel="external">react 入门教程</a></li>
 </ol>
 
         
@@ -414,7 +559,7 @@ module.exports = {
 
 </div>
 
-    <a data-url="http://cc2victoria.github.io/2017/05/24/提高webpack构建效率之DLLPlugin/" data-id="cjf48sr0t000f8gvfhdwj28wc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://cc2victoria.github.io/2017/03/23/webpack-react项目搭建入门/" data-id="cjf48sr0g000b8gvfo77nf5yg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -482,7 +627,7 @@ module.exports = {
 
             
     
-        <a href="http://cc2victoria.github.io/2017/05/24/提高webpack构建效率之DLLPlugin/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://cc2victoria.github.io/2017/05/24/提高webpack构建效率之DLLPlugin/">Comments</a>
+        <a href="http://cc2victoria.github.io/2017/03/23/webpack-react项目搭建入门/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://cc2victoria.github.io/2017/03/23/webpack-react项目搭建入门/">Comments</a>
     
 
         </footer>
@@ -491,19 +636,19 @@ module.exports = {
         
 <nav id="article-nav">
     
-        <a href="/2017/06/04/Redux&&Flux经常不被需要？/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/03/24/linux-常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    Redux&amp;&amp;Flux经常不被需要？
+                    linux 常用命令
                 
             </div>
         </a>
     
     
-        <a href="/2017/04/26/php-安装和开启外部扩展库/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/12/14/React-知识图谱/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">php 安装和开启外部扩展库</div>
+            <div class="article-nav-title">React 知识学习图谱</div>
         </a>
     
 </nav>
@@ -703,9 +848,9 @@ module.exports = {
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'http://cc2victoria.github.io/2017/05/24/提高webpack构建效率之DLLPlugin/';
+            this.page.url = 'http://cc2victoria.github.io/2017/03/23/webpack-react项目搭建入门/';
         
-        this.page.identifier = '提高webpack构建效率之DLLPlugin';
+        this.page.identifier = 'webpack-react项目搭建入门';
     };
     (function() { 
         var d = document, s = d.createElement('script');  

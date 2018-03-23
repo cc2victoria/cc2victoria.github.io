@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Cecelia's BLOG">
 <meta property="og:description" content="新配置的一台linux, 环境装上了，但是yum这些命令什么的一直连接不上，服务一直报Connection failed， 这种情况可以尝试下ping baidu.com，看看返回结果，如果识别或者解析不了，那么就应该是linux访问不到外网的问题。">
 <meta property="og:image" content="http://cc2victoria.github.io/2017/08/15/linux如何访问外网？/5.jpg">
-<meta property="og:updated_time" content="2017-08-15T16:03:17.805Z">
+<meta property="og:updated_time" content="2018-03-23T17:44:20.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux如何访问外网？">
 <meta name="twitter:description" content="新配置的一台linux, 环境装上了，但是yum这些命令什么的一直连接不上，服务一直报Connection failed， 这种情况可以尝试下ping baidu.com，看看返回结果，如果识别或者解析不了，那么就应该是linux访问不到外网的问题。">
@@ -161,7 +161,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                7
+                8
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -263,12 +263,12 @@
 <ol>
 <li><p><strong>防火墙未关闭</strong></p>
 <ol>
-<li>查看防火墙状态：<code>systemctl status firewalld</code><br><img src="1.jpg" alt=""></li>
+<li>查看防火墙状态：<code>systemctl status firewalld</code><br><img src="1.png" alt=""></li>
 <li>关闭防火墙：<code>systemctl stop firewalld</code></li>
-<li><p>关闭防火墙开机自启： <code>systemctl disable firewallld</code><br><img src="2.jpg" alt=""></p>
-<p>  <strong>防火墙开机自启关闭失败了？？？</strong>：解决方法：修改 selinux配置，并将其设置为disabled如下：<br><img src="3.jpg" alt="">    </p>
+<li><p>关闭防火墙开机自启： <code>systemctl disable firewallld</code><br><img src="2.png" alt=""></p>
+<p>  <strong>防火墙开机自启关闭失败了？？？</strong>：解决方法：修改 selinux配置，并将其设置为disabled如下：<br><img src="3.png" alt="">    </p>
 </li>
-<li>再执行步骤3<br><img src="4.jpg" alt="">    </li>
+<li>再执行步骤3<br><img src="4.png" alt="">    </li>
 <li>reboot 重启虚拟机</li>
 </ol>
 </li>
@@ -287,7 +287,7 @@
 
 </div>
 
-    <a data-url="http://cc2victoria.github.io/2017/08/15/linux如何访问外网？/" data-id="cj6dtmdx50008noa1z1h1opj4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://cc2victoria.github.io/2017/08/15/linux如何访问外网？/" data-id="cjf48sr0200088gvfofvr0s55" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -501,7 +501,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/react/components/">components</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/react/components/">components</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -510,7 +510,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -519,7 +519,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DLLPlugin/">DLLPlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DllReferencePlugin/">DllReferencePlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/components/">components</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flux/">flux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/">redux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DLLPlugin/">DLLPlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DllReferencePlugin/">DllReferencePlugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/components/">components</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flux/">flux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/">redux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -528,7 +528,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/DLLPlugin/" style="font-size: 10px;">DLLPlugin</a> <a href="/tags/DllReferencePlugin/" style="font-size: 10px;">DllReferencePlugin</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/flux/" style="font-size: 10px;">flux</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+            <a href="/tags/DLLPlugin/" style="font-size: 10px;">DLLPlugin</a> <a href="/tags/DllReferencePlugin/" style="font-size: 10px;">DllReferencePlugin</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/flux/" style="font-size: 10px;">flux</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/redux/" style="font-size: 10px;">redux</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a>
         </div>
     </div>
 
@@ -557,7 +557,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 Yanjiao Lu<br>
+            &copy; 2018 Yanjiao Lu<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>
